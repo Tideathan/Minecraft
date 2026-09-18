@@ -1,23 +1,23 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "release_date": "2026-09-18",
-  "changelog": "Добавлена полная авто-загрузка игры с нуля (Java 21, NeoForge 21.1.250, ассеты и моды)",
+  "changelog": "Переключение сборки и ядра на NeoForge 21.1.248, обновление установщика",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "8c40c77624fbf4bcb22a681eb0a7b0340d9741b5",
-      "size": 32377284
+      "sha1": "277bea71162d736e375dc1805126a7dd8c57b5c8",
+      "size": 32378369
     },
     "launcher.py": {
-      "sha1": "a0d56bfdc407832bb718f9ed237874b8fbebb99e",
+      "sha1": "be3ebe77f95105117a90ce9d6dacbe0e42a81440",
       "size": 72834
     },
     "launcher_core.py": {
-      "sha1": "1394dc25006fb570d7ee490f7937b4514d0818c5",
+      "sha1": "aa196c7981539ba63314f358c34195c8c1578340",
       "size": 7270
     },
     "game_downloader.py": {
-      "sha1": "7d068cb3218e229ba0e0859b78d6727e97e73e0c",
+      "sha1": "8f454ee5c90a5197c0cacf1d89b7b2d0f6f147e7",
       "size": 9313
     },
     "java_manager.py": {
@@ -25,8 +25,8 @@
       "size": 7156
     },
     "version_manager.py": {
-      "sha1": "d00f7e7851ef8a8575b4763554f3310ec3557fd5",
-      "size": 5236
+      "sha1": "151496a97c6035d693152e41ecac3f47c3acd16e",
+      "size": 5230
     },
     "mod_updater.py": {
       "sha1": "fc69461a282481eb1faa273068a1ce61409620f8",
@@ -36,16 +36,20 @@
       "sha1": "54082bc33735b61120d9d6164779f6cf147752be",
       "size": 6785
     },
+    "pack_distributor.py": {
+      "sha1": "e8527060132d9c315c12b35bc6f7be89627dfbe2",
+      "size": 4586
+    },
     "github_sync.py": {
-      "sha1": "56fbd496d24d0906c8ce1c101f5ffc8ef1cde4ac",
+      "sha1": "f6a2b2ad2a60f74c7c4302d7de9633735e81ccd4",
       "size": 8535
     },
     "launcher_updater.py": {
-      "sha1": "04aebcb6fbcd9cd9e4aca348b8df94f4c0f31dd7",
+      "sha1": "3e2987e2c0665041aa2dff3e38d76d01f38e5ebb",
       "size": 6623
     },
     "push_to_github.py": {
-      "sha1": "b0e28532123f3e03c028e81c89e790b48977e8ed",
+      "sha1": "78aeffbde3e9f778a7f0702789f42af4deb46a39",
       "size": 8626
     },
     "Launcher.bat": {
@@ -69,8 +73,12 @@
       "size": 91676
     },
     "installer.py": {
-      "sha1": "f1223769d582538340a8a3818a8159c38dae01e7",
-      "size": 14503
+      "sha1": "567e85514a068f03f5579a48e1d32a2d882b3910",
+      "size": 14530
+    },
+    "Minecraft_Launcher_Setup.exe": {
+      "sha1": "b9382a6b5fe5737746abf3419dc2a2cc42e17ab1",
+      "size": 65175899
     }
   }
 }

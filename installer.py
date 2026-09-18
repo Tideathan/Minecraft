@@ -37,6 +37,7 @@ LAUNCHER_FILES = [
     "version_manager.py",
     "mod_updater.py",
     "skin_manager.py",
+    "pack_distributor.py",
     "github_sync.py",
     "launcher_updater.py",
     "push_to_github.py",
@@ -49,7 +50,7 @@ LAUNCHER_FILES = [
 
 DEFAULT_CONFIG_CONTENT = {
     "username": "Player",
-    "version": "neoforge-21.1.250",
+    "version": "neoforge-21.1.248",
     "ram_mb": 8192,
     "width": 1280,
     "height": 720,

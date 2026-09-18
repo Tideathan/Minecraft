@@ -76,7 +76,7 @@ def gather_build_files():
 
     return files
 
-def build_manifest(files_map, version="1.0.0", neoforge_version="21.1.250"):
+def build_manifest(files_map, version="1.0.0", neoforge_version="21.1.248"):
     manifest_files = {}
     print(f"Вычисление SHA1 хешей для {len(files_map)} файлов сборки...")
     for i, (rel_path, abs_path) in enumerate(files_map.items()):

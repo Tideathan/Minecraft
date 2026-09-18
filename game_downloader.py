@@ -13,7 +13,7 @@ MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CU
 ASSET_INDEX_URL = "https://piston-meta.mojang.com/v1/packages/76d7a97b9e0778fda3b14e474f012450ca0de1bb/17.json"
 ASSET_CDN_BASE = "https://resources.download.minecraft.net"
 
-def check_game_status(target_ver="neoforge-21.1.250"):
+def check_game_status(target_ver="neoforge-21.1.248"):
     """
     Checks what components are currently installed.
     Returns dict with status flags.
@@ -125,14 +125,14 @@ def download_vanilla_assets(progress_callback=None):
 def download_everything_auto(
     repo_slug="Tideathan/Minecraft", 
     branch="main", 
-    target_ver="neoforge-21.1.250",
+    target_ver="neoforge-21.1.248",
     progress_callback=None,
     step_callback=None
 ):
     """
     Executes full end-to-end automated installation:
     1. Java 21
-    2. NeoForge 21.1.250 + Vanilla 1.21.1
+    2. NeoForge 21.1.248 + Vanilla 1.21.1
     3. Vanilla Assets
     4. GitHub Modpack
     """

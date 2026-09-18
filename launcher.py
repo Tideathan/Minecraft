@@ -106,7 +106,7 @@ COLOR_BTN_PLAY_BORDER = ("#1b5e20", "#00ff88")
 def load_config():
     default_cfg = {
         "username": "Adolf",
-        "version": "neoforge-21.1.250",
+        "version": "neoforge-21.1.248",
         "ram_mb": DEFAULT_RAM_MB,
         "width": 1280,
         "height": 720,
@@ -470,7 +470,7 @@ class ModernLauncherApp(ctk.CTk):
 
         self.lbl_play_version = ctk.CTkLabel(
             play_card,
-            text="Сборка: " + self.cfg.get("version", "neoforge-21.1.250"),
+            text="Сборка: " + self.cfg.get("version", "neoforge-21.1.248"),
             font=ctk.CTkFont(size=13, weight="bold"),
             text_color=COLOR_TEXT_SECONDARY
         )
@@ -582,7 +582,7 @@ class ModernLauncherApp(ctk.CTk):
         row_auto = ctk.CTkFrame(card_auto_all, fg_color="transparent")
         row_auto.pack(fill="x", padx=14, pady=8)
 
-        txt_info = "⚡ ПОЛНАЯ АВТО-УСТАНОВКА «ВСЁ ВКЛЮЧЕНО» (ДЛЯ ЧИСТЫХ ПК):\nСкачает Adoptium Java 21, ядро NeoForge 21.1.250 с библиотеками, звуки и всю сборку с GitHub."
+        txt_info = "⚡ ПОЛНАЯ АВТО-УСТАНОВКА «ВСЁ ВКЛЮЧЕНО» (ДЛЯ ЧИСТЫХ ПК):\nСкачает Adoptium Java 21, ядро NeoForge 21.1.248 с библиотеками, звуки и всю сборку с GitHub."
         ctk.CTkLabel(row_auto, text=txt_info, font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR_TEXT_PRIMARY, justify="left").pack(side="left")
 
         self.btn_download_everything = ctk.CTkButton(
@@ -1116,7 +1116,7 @@ class ModernLauncherApp(ctk.CTk):
         v_labels = [v["label"] for v in self.installed_versions]
         self.combo_versions.configure(values=v_labels)
         
-        curr_vid = self.cfg.get("version", "neoforge-21.1.250")
+        curr_vid = self.cfg.get("version", "neoforge-21.1.248")
         matched = next((v["label"] for v in self.installed_versions if v["id"] == curr_vid), None)
         if matched:
             self.combo_versions.set(matched)
@@ -1353,7 +1353,7 @@ class ModernLauncherApp(ctk.CTk):
 
         def load_versions():
             vers = fetch_available_neoforge_versions("21.1")
-            modal.after(0, lambda: (combo_nf.configure(values=vers), combo_nf.set(vers[0] if vers else "21.1.250"), lbl_st.configure(text="Выберите версию и нажмите Установить")))
+            modal.after(0, lambda: (combo_nf.configure(values=vers), combo_nf.set(vers[0] if vers else "21.1.248"), lbl_st.configure(text="Выберите версию и нажмите Установить")))
         threading.Thread(target=load_versions, daemon=True).start()
 
         def do_install():
@@ -1459,7 +1459,7 @@ class ModernLauncherApp(ctk.CTk):
             "Полная загрузка и установка",
             f"Лаунчер автоматически скачает и настроит всё необходимое для игры:\n\n"
             f"1. Adoptium OpenJDK Java 21 (если не найдена)\n"
-            f"2. Ядро NeoForge 21.1.250 и библиотеки Mojang\n"
+            f"2. Ядро NeoForge 21.1.248 и библиотеки Mojang\n"
             f"3. Ванильные звуки и текстуры (Assets 1.21.1)\n"
             f"4. Сборку модов, конфигов и шейдеров с GitHub ({repo})\n\n"
             f"Запустить полную загрузку?"
@@ -1490,7 +1490,7 @@ class ModernLauncherApp(ctk.CTk):
             ok, msg = download_everything_auto(
                 repo_slug=repo,
                 branch=self.cfg.get("github_branch", "main"),
-                target_ver=self.cfg.get("version", "neoforge-21.1.250"),
+                target_ver=self.cfg.get("version", "neoforge-21.1.248"),
                 progress_callback=_prog,
                 step_callback=lambda step: self.after(0, lambda: self.log(f"\n>>> [ШАГ] {step}"))
             )

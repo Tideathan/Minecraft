@@ -16,7 +16,7 @@ if not os.path.exists(DEFAULT_JAVA):
 
 def build_launch_command(
     username, 
-    version_id="neoforge-21.1.250", 
+    version_id="neoforge-21.1.248", 
     ram_mb=10240, 
     java_path=None, 
     width=1280, 

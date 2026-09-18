@@ -111,7 +111,7 @@ def compare_manifest_with_local(manifest, progress_callback=None):
     return {
         "version": manifest.get("version", "1.0.0"),
         "updated_at": manifest.get("updated_at", ""),
-        "neoforge_version": manifest.get("neoforge_version", "21.1.250"),
+        "neoforge_version": manifest.get("neoforge_version", "21.1.248"),
         "to_download": to_download,
         "to_delete": to_delete,
         "up_to_date_count": up_to_date_count,

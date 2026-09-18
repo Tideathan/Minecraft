@@ -30,10 +30,10 @@ def get_installed_versions():
             if is_neoforge:
                 ver_num = v_id.replace("neoforge-", "").replace("NeoForge-", "")
                 label = f"NeoForge {ver_num}"
-                if ver_num == "21.1.250":
-                    label += " (Актуальная)"
-                elif ver_num == "21.1.248":
-                    label += " (Стабильная)"
+                if ver_num == "21.1.248":
+                    label += " (Рекомендуемая)"
+                elif ver_num == "21.1.250":
+                    label += " (NeoForge)"
             elif v_id == "1.21.1":
                 label = "Minecraft 1.21.1 (Vanilla)"
             else:
@@ -58,7 +58,7 @@ def fetch_available_neoforge_versions(mc_target="21.1"):
         return versions[:20]
     except Exception as e:
         print(f"Error fetching NeoForge versions: {e}")
-        return ["21.1.250", "21.1.248", "21.1.238"]
+        return ["21.1.248", "21.1.250", "21.1.238"]
 
 def install_neoforge_version(neoforge_ver, java_exe, progress_callback=None):
     installer_url = f"https://maven.neoforged.net/releases/net/neoforged/neoforge/{neoforge_ver}/neoforge-{neoforge_ver}-installer.jar"

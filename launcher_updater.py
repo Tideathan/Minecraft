@@ -12,7 +12,7 @@ LAUNCHER_BRANCH = "launcher"
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 LAUNCHER_DIR = _CURR_DIR
-MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
 BACKUP_DIR = os.path.join(MC_DIR, "..", ".minecraft_backup", "launcher_updates")
 
 LAUNCHER_FILES = [

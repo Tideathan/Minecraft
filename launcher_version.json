@@ -1,27 +1,27 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "release_date": "2026-09-18",
-  "changelog": "Переключение сборки и ядра на NeoForge 21.1.248, обновление установщика",
+  "changelog": "Улучшена совместимость путей и добавлена авто-очистка чужих модов и артефактов TLauncher",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "277bea71162d736e375dc1805126a7dd8c57b5c8",
-      "size": 32378369
+      "sha1": "0eb5fa511fb4ab6287f2d29ade50ce6a930becc7",
+      "size": 32378828
     },
     "launcher.py": {
       "sha1": "be3ebe77f95105117a90ce9d6dacbe0e42a81440",
       "size": 72834
     },
     "launcher_core.py": {
-      "sha1": "aa196c7981539ba63314f358c34195c8c1578340",
+      "sha1": "1312428eddff37f65b28a3299c2835a7806919ba",
       "size": 7270
     },
     "game_downloader.py": {
-      "sha1": "8f454ee5c90a5197c0cacf1d89b7b2d0f6f147e7",
-      "size": 9313
+      "sha1": "fe369247e4d9cdd06210aa8d566d93db9dc6c3cd",
+      "size": 9666
     },
     "java_manager.py": {
-      "sha1": "71d59a383fbd65d02c601ff17358076d67bd4497",
+      "sha1": "439c754df4384f34420c7ccc624e11f6155cce2e",
       "size": 7156
     },
     "version_manager.py": {
@@ -29,23 +29,23 @@
       "size": 5230
     },
     "mod_updater.py": {
-      "sha1": "fc69461a282481eb1faa273068a1ce61409620f8",
-      "size": 6296
+      "sha1": "5365d9023c5b967e6be887e5e9a7089f20da1d58",
+      "size": 6314
     },
     "skin_manager.py": {
       "sha1": "54082bc33735b61120d9d6164779f6cf147752be",
       "size": 6785
     },
     "pack_distributor.py": {
-      "sha1": "e8527060132d9c315c12b35bc6f7be89627dfbe2",
-      "size": 4586
+      "sha1": "928cb82c8e7d20a6bb65c72a3d5b1fb286181bc2",
+      "size": 4748
     },
     "github_sync.py": {
-      "sha1": "f6a2b2ad2a60f74c7c4302d7de9633735e81ccd4",
-      "size": 8535
+      "sha1": "c98575bb27423ea9b9497aacc940674cf92adf90",
+      "size": 10076
     },
     "launcher_updater.py": {
-      "sha1": "3e2987e2c0665041aa2dff3e38d76d01f38e5ebb",
+      "sha1": "1e7a3d649f334363df78276ba3cc170ce4133a9b",
       "size": 6623
     },
     "push_to_github.py": {
@@ -73,12 +73,12 @@
       "size": 91676
     },
     "installer.py": {
-      "sha1": "567e85514a068f03f5579a48e1d32a2d882b3910",
-      "size": 14530
+      "sha1": "bc9e92cb5d03f637ac4c2c2853510e2786f866ed",
+      "size": 15248
     },
     "Minecraft_Launcher_Setup.exe": {
-      "sha1": "b9382a6b5fe5737746abf3419dc2a2cc42e17ab1",
-      "size": 65175899
+      "sha1": "2d0a0fd197a7d3b1cbb5af21bc465a4c8dc0e911",
+      "size": 65178528
     }
   }
 }

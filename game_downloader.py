@@ -8,7 +8,7 @@ from version_manager import install_neoforge_version
 from github_sync import fetch_manifest_from_github, compare_manifest_with_local, sync_differences
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
 
 ASSET_INDEX_URL = "https://piston-meta.mojang.com/v1/packages/76d7a97b9e0778fda3b14e474f012450ca0de1bb/17.json"
 ASSET_CDN_BASE = "https://resources.download.minecraft.net"
@@ -142,6 +142,13 @@ def download_everything_auto(
         if progress_callback:
             progress_callback(p, detail)
 
+    # --- PRE-STEP: CLEAN JUNK & TLAUNCHER ARTIFACTS ---
+    try:
+        from github_sync import cleanup_tlauncher_artifacts
+        cleanup_tlauncher_artifacts(MC_DIR)
+    except Exception:
+        pass
+
     # --- STEP 1: JAVA 21 ---
     _notify("Проверка Java 21", 0.05, "Поиск совместимого Java 21...")
     status = check_game_status(target_ver)
@@ -200,8 +207,10 @@ def download_everything_auto(
     diff = compare_manifest_with_local(manifest)
     
     to_dl = diff.get("to_download", [])
-    if to_dl:
-        _notify("Загрузка модов", 0.84, f"Загрузка файлов сборки ({len(to_dl)} шт.)...")
+    to_del = diff.get("to_delete", [])
+    if to_dl or to_del:
+        action_text = f"Синхронизация сборки (скачать: {len(to_dl)}, очистить старых/чужих: {len(to_del)})..."
+        _notify("Загрузка модов", 0.84, action_text)
         ok_sync, msg_sync = sync_differences(
             diff, 
             repo_slug, 

@@ -5,8 +5,8 @@ import urllib.request
 import shutil
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
-MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
-BACKUP_DIR = r"c:\Users\user\AppData\Roaming\.minecraft_backup\mods_replaced"
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
+BACKUP_DIR = os.path.normpath(os.path.join(MC_DIR, "..", ".minecraft_backup", "mods_replaced"))
 
 def calculate_sha1(filepath):
     h = hashlib.sha1()
@@ -189,7 +189,51 @@ def sync_differences(comparison_result, repo_slug, branch="main", token=None, pr
         if os.path.exists(del_path):
             shutil.move(del_path, os.path.join(BACKUP_DIR, os.path.basename(del_path)))
 
+    # Also clean any leftover TLauncher files
+    cleanup_tlauncher_artifacts(MC_DIR)
+
     if progress_callback:
         progress_callback(1.0, f"Успешно синхронизировано {total} файлов!")
 
     return True, f"Сборка синхронизирована: обновлено {total} файлов, удалено {len(to_del)} старых."
+
+def cleanup_tlauncher_artifacts(mc_dir=MC_DIR):
+    """
+    Cleans up any TLauncher artifacts that can cause crashes or auth issues:
+    - TLauncherAdditional.json in versions/*/
+    - libraries/org/tlauncher
+    - root TLauncher.exe.temp, tlLoader, etc.
+    """
+    cleaned = []
+    # 1. versions/*/TLauncherAdditional.json
+    vers_dir = os.path.join(mc_dir, "versions")
+    if os.path.exists(vers_dir):
+        for v in os.listdir(vers_dir):
+            t_json = os.path.join(vers_dir, v, "TLauncherAdditional.json")
+            if os.path.exists(t_json):
+                try:
+                    os.remove(t_json)
+                    cleaned.append(f"TLauncherAdditional.json ({v})")
+                except Exception:
+                    pass
+    
+    # 2. libraries/org/tlauncher
+    tl_libs = os.path.join(mc_dir, "libraries", "org", "tlauncher")
+    if os.path.exists(tl_libs):
+        try:
+            shutil.rmtree(tl_libs, ignore_errors=True)
+            cleaned.append("libraries/org/tlauncher")
+        except Exception:
+            pass
+
+    # 3. root tl junk
+    for junk in ["TLauncher.exe.temp", "TLauncher32bit.exe", "TempOptifineStore-1.0.json"]:
+        jp = os.path.join(mc_dir, junk)
+        if os.path.exists(jp):
+            try:
+                os.remove(jp)
+                cleaned.append(junk)
+            except Exception:
+                pass
+
+    return cleaned

@@ -282,6 +282,20 @@ class InstallerApp(ctk.CTk):
                     with open(cfg_path, "w", encoding="utf-8") as f:
                         json.dump(DEFAULT_CONFIG_CONTENT, f, indent=2, ensure_ascii=False)
 
+                # 2.1 Clean any old TLauncher hooks if this is an existing .minecraft
+                try:
+                    vers_d = os.path.join(target_dir, "versions")
+                    if os.path.exists(vers_d):
+                        for v in os.listdir(vers_d):
+                            tj = os.path.join(vers_d, v, "TLauncherAdditional.json")
+                            if os.path.exists(tj):
+                                os.remove(tj)
+                    tl_libs = os.path.join(target_dir, "libraries", "org", "tlauncher")
+                    if os.path.exists(tl_libs):
+                        shutil.rmtree(tl_libs, ignore_errors=True)
+                except Exception:
+                    pass
+
                 # 3. Create shortcuts
                 self.after(0, lambda: self.lbl_status.configure(text="Создание ярлыков..."))
                 self.progress_bar.set(0.75)

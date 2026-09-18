@@ -2,7 +2,7 @@
   "name": "Minecraft NeoForge Launcher",
   "version": "1.1.2",
   "release_date": "2026-09-18",
-  "changelog": "Патч 1.1.2: URL-encoding для пробелов и спецсимволов в путях файлов модов и конфигов",
+  "changelog": "Улучшения производительности и исправления интерфейса.",
   "files": {
     "Minecraft_Launcher.exe": {
       "sha1": "aea7eb0769f400463095e6a009b7ed74256f2a99",

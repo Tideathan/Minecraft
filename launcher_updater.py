@@ -3,12 +3,28 @@ import sys
 import json
 import time
 import hashlib
+import ssl
 import urllib.request
 import urllib.parse
 import shutil
 import subprocess
 
-CURRENT_LAUNCHER_VERSION = "1.1.2"
+def get_ssl_context():
+    """Return SSL context. Uses certifi if available, else system certs, else unverified."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    # Last resort: disable verification (avoids crash when certs unavailable in frozen exe)
+    ctx = ssl._create_unverified_context()
+    return ctx
+
+CURRENT_LAUNCHER_VERSION = "1.1.3"
 DEFAULT_REPO_SLUG = "Tideathan/Minecraft"
 LAUNCHER_BRANCH = "launcher"
 
@@ -103,10 +119,11 @@ def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, t
         headers["Authorization"] = f"token {token}"
 
     commit_sha = None
+    ssl_ctx = get_ssl_context()
     try:
         api_url = f"https://api.github.com/repos/{slug}/branches/{branch}"
         api_req = urllib.request.Request(api_url, headers=headers)
-        with urllib.request.urlopen(api_req, timeout=8) as resp:
+        with urllib.request.urlopen(api_req, timeout=8, context=ssl_ctx) as resp:
             c_data = json.loads(resp.read().decode("utf-8"))
             commit_sha = c_data.get("commit", {}).get("sha")
     except Exception:
@@ -119,7 +136,7 @@ def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, t
 
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=10, context=ssl_ctx) as resp:
             data = json.loads(resp.read().decode("utf-8"))
 
         remote_ver_str = data.get("version", "1.0.0")
@@ -162,6 +179,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
         headers["Authorization"] = f"token {token}"
 
     ref = update_info.get("commit_sha") or branch
+    ssl_ctx = get_ssl_context()
 
     # 1. Download to temp
     for i, (rel_path, meta) in enumerate(files_map.items()):
@@ -178,7 +196,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
 
         try:
             req = urllib.request.Request(raw_url, headers=headers)
-            with urllib.request.urlopen(req, timeout=20) as resp:
+            with urllib.request.urlopen(req, timeout=20, context=ssl_ctx) as resp:
                 with open(temp_dest, "wb") as f:
                     while chunk := resp.read(65536):
                         f.write(chunk)

@@ -1,8 +1,21 @@
 import os
 import json
+import ssl
 import urllib.request
 import xml.etree.ElementTree as ET
 import subprocess
+
+def get_ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    return ssl._create_unverified_context()
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
@@ -50,7 +63,7 @@ def get_installed_versions():
 def fetch_available_neoforge_versions(mc_target="21.1"):
     try:
         req = urllib.request.Request(MAVEN_METADATA_URL, headers={"User-Agent": "AntigravityLauncher/1.0"})
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=8, context=get_ssl_context()) as resp:
             xml_data = resp.read()
         root = ET.fromstring(xml_data)
         versions = [v.text for v in root.findall(".//version") if v.text and v.text.startswith(mc_target)]
@@ -77,7 +90,7 @@ def install_neoforge_version(neoforge_ver, java_exe, progress_callback=None):
             progress_callback(0.1, f"Скачивание установщика NeoForge {neoforge_ver}...")
 
         req = urllib.request.Request(installer_url, headers={"User-Agent": "AntigravityLauncher/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp, open(installer_path, "wb") as out_f:
+        with urllib.request.urlopen(req, timeout=30, context=get_ssl_context()) as resp, open(installer_path, "wb") as out_f:
             while chunk := resp.read(65536):
                 out_f.write(chunk)
 

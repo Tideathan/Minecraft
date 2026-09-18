@@ -1,9 +1,22 @@
 import os
 import hashlib
 import json
+import ssl
 import urllib.request
 import shutil
 import zipfile
+
+def get_ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    return ssl._create_unverified_context()
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
@@ -80,7 +93,7 @@ def check_mod_updates_async(progress_callback=None):
                 },
                 method="POST"
             )
-            with urllib.request.urlopen(req, timeout=12) as resp:
+            with urllib.request.urlopen(req, timeout=12, context=get_ssl_context()) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
 
             for h, vinfo in data.items():
@@ -95,7 +108,7 @@ def check_mod_updates_async(progress_callback=None):
                 try:
                     p_url = f"https://api.modrinth.com/v2/project/{project_id}/version?game_versions=[%221.21.1%22]&loaders=[%22neoforge%22]"
                     p_req = urllib.request.Request(p_url, headers={"User-Agent": "AntigravityLauncher/1.0"})
-                    with urllib.request.urlopen(p_req, timeout=8) as p_resp:
+                    with urllib.request.urlopen(p_req, timeout=8, context=get_ssl_context()) as p_resp:
                         p_versions = json.loads(p_resp.read().decode("utf-8"))
                         if p_versions:
                             latest = p_versions[0]

@@ -1,9 +1,22 @@
 import os
 import re
+import ssl
 import zipfile
 import subprocess
 import urllib.request
 import shutil
+
+def get_ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    return ssl._create_unverified_context()
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
@@ -137,7 +150,7 @@ def download_and_extract_java_21(progress_callback=None):
             progress_callback(0.05, "Подключение к серверу Adoptium...")
 
         req = urllib.request.Request(ADOPTIUM_URL, headers={"User-Agent": "AntigravityLauncher/1.0"})
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=15, context=get_ssl_context()) as resp:
             total_size = int(resp.headers.get("Content-Length", 48999141))
             downloaded = 0
             chunk_size = 131072 # 128 KB

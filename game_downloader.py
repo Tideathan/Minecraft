@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import ssl
 import urllib.request
 import concurrent.futures
 from java_manager import find_all_javas, download_and_extract_java_21, get_java_version_info
@@ -12,6 +13,18 @@ MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CU
 
 ASSET_INDEX_URL = "https://piston-meta.mojang.com/v1/packages/76d7a97b9e0778fda3b14e474f012450ca0de1bb/17.json"
 ASSET_CDN_BASE = "https://resources.download.minecraft.net"
+
+def get_ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    return ssl._create_unverified_context()
 
 def check_game_status(target_ver="neoforge-21.1.248"):
     """
@@ -75,7 +88,7 @@ def download_vanilla_assets(progress_callback=None):
 
     try:
         req = urllib.request.Request(ASSET_INDEX_URL, headers={"User-Agent": "Mozilla/5.0 (Minecraft Launcher)"})
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=15, context=get_ssl_context()) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         with open(index_path, "w", encoding="utf-8") as f:
             json.dump(data, f)
@@ -101,10 +114,11 @@ def download_vanilla_assets(progress_callback=None):
         h, dest, size = item
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         url = f"{ASSET_CDN_BASE}/{h[:2]}/{h}"
+        ssl_ctx = get_ssl_context()
         for _ in range(2):
             try:
                 req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-                with urllib.request.urlopen(req, timeout=12) as r, open(dest, "wb") as f:
+                with urllib.request.urlopen(req, timeout=12, context=ssl_ctx) as r, open(dest, "wb") as f:
                     while chunk := r.read(65536):
                         f.write(chunk)
                 return True

@@ -1,9 +1,24 @@
 import os
 import json
 import hashlib
+import ssl
 import urllib.request
 import urllib.parse
 import shutil
+
+def get_ssl_context():
+    """Return SSL context. Uses certifi if available, else system certs, else unverified."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        pass
+    try:
+        return ssl.create_default_context()
+    except Exception:
+        pass
+    ctx = ssl._create_unverified_context()
+    return ctx
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
 MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
@@ -70,7 +85,7 @@ def fetch_manifest_from_github(repo_slug, branch="main", token=None):
         headers["Authorization"] = f"token {token}"
     try:
         req = urllib.request.Request(manifest_url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=10, context=get_ssl_context()) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         return True, data, manifest_url
     except Exception as e:
@@ -160,8 +175,9 @@ def sync_differences(comparison_result, repo_slug, branch="main", token=None, pr
             headers = {"User-Agent": "AntigravityLauncher/1.0"}
             if token:
                 headers["Authorization"] = f"token {token}"
+            ssl_ctx = get_ssl_context()
             req = urllib.request.Request(raw_url, headers=headers)
-            with urllib.request.urlopen(req, timeout=20) as resp:
+            with urllib.request.urlopen(req, timeout=20, context=ssl_ctx) as resp:
                 with open(temp_target, "wb") as f:
                     while chunk := resp.read(65536):
                         f.write(chunk)
@@ -178,7 +194,7 @@ def sync_differences(comparison_result, repo_slug, branch="main", token=None, pr
                     if token:
                         headers_lfs["Authorization"] = f"token {token}"
                     req_lfs = urllib.request.Request(media_url, headers=headers_lfs)
-                    with urllib.request.urlopen(req_lfs, timeout=60) as resp_lfs:
+                    with urllib.request.urlopen(req_lfs, timeout=60, context=ssl_ctx) as resp_lfs:
                         with open(temp_target, "wb") as f_lfs:
                             while chunk := resp_lfs.read(65536):
                                 f_lfs.write(chunk)

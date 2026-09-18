@@ -1,8 +1,8 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "release_date": "2026-09-18",
-  "changelog": "Улучшена совместимость путей и добавлена авто-очистка чужих модов и артефактов TLauncher",
+  "changelog": "Полная проверка цикла обновления лаунчера и компонентов",
   "files": {
     "Minecraft_Launcher.exe": {
       "sha1": "0eb5fa511fb4ab6287f2d29ade50ce6a930becc7",
@@ -49,8 +49,8 @@
       "size": 6623
     },
     "push_to_github.py": {
-      "sha1": "78aeffbde3e9f778a7f0702789f42af4deb46a39",
-      "size": 8626
+      "sha1": "28641fed98e23ebfbb4a311b7b5554041506c238",
+      "size": 8680
     },
     "Launcher.bat": {
       "sha1": "fc657e5e175ed95191eb904ea5ff7fd75b127163",

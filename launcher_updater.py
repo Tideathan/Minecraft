@@ -7,7 +7,7 @@ import urllib.request
 import shutil
 import subprocess
 
-CURRENT_LAUNCHER_VERSION = "1.0.1"
+CURRENT_LAUNCHER_VERSION = "1.0.8"
 DEFAULT_REPO_SLUG = "Tideathan/Minecraft"
 LAUNCHER_BRANCH = "launcher"
 
@@ -93,7 +93,6 @@ def check_file_matches(filepath, expected_sha1):
 
 def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, token=None):
     slug = normalize_slug(repo_slug)
-    url = f"https://raw.githubusercontent.com/{slug}/{branch}/launcher_version.json?_nocache={int(time.time())}"
     headers = {
         "User-Agent": "AntigravityLauncherUpdater/1.0",
         "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -101,6 +100,21 @@ def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, t
     }
     if token:
         headers["Authorization"] = f"token {token}"
+
+    commit_sha = None
+    try:
+        api_url = f"https://api.github.com/repos/{slug}/commits/{branch}"
+        api_req = urllib.request.Request(api_url, headers=headers)
+        with urllib.request.urlopen(api_req, timeout=8) as resp:
+            c_data = json.loads(resp.read().decode("utf-8"))
+            commit_sha = c_data.get("sha")
+    except Exception:
+        pass
+
+    ref = commit_sha if commit_sha else branch
+    url = f"https://raw.githubusercontent.com/{slug}/{ref}/launcher_version.json"
+    if not commit_sha:
+        url += f"?_nocache={int(time.time())}"
 
     try:
         req = urllib.request.Request(url, headers=headers)
@@ -119,7 +133,8 @@ def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, t
             "release_date": data.get("release_date", ""),
             "changelog": data.get("changelog", "Улучшения стабильности и исправления интерфейса."),
             "files": data.get("files", {}),
-            "download_zip_url": data.get("download_zip_url", "")
+            "download_zip_url": data.get("download_zip_url", ""),
+            "commit_sha": commit_sha
         }
     except Exception as e:
         return False, f"Ошибка соединения с GitHub: {e}"
@@ -145,12 +160,16 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
     if token:
         headers["Authorization"] = f"token {token}"
 
+    ref = update_info.get("commit_sha") or branch
+
     # 1. Download to temp
     for i, (rel_path, meta) in enumerate(files_map.items()):
         if progress_callback:
             progress_callback(i / total_files * 0.8, f"Загрузка файла: {rel_path}...")
 
-        raw_url = f"https://raw.githubusercontent.com/{slug}/{branch}/{rel_path.replace('\\', '/')}?_nocache={int(time.time())}"
+        raw_url = f"https://raw.githubusercontent.com/{slug}/{ref}/{rel_path.replace('\\', '/')}"
+        if not update_info.get("commit_sha"):
+            raw_url += f"?_nocache={int(time.time())}"
         dest_local = os.path.join(LAUNCHER_DIR, rel_path)
         temp_dest = dest_local + ".new_update"
         os.makedirs(os.path.dirname(temp_dest), exist_ok=True)

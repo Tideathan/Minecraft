@@ -1,8 +1,8 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "release_date": "2026-09-18",
-  "changelog": "Обновление 1.0.8: улучшенная проверка хешей и полная поддержка автообновлений",
+  "changelog": "Релиз 1.0.9: полная атомарная синхронизация через commit SHA",
   "files": {
     "Minecraft_Launcher.exe": {
       "sha1": "6a1f20865e47d3da8919268cfc1bf22f05fa95b9",
@@ -14,7 +14,7 @@
     },
     "launcher_core.py": {
       "sha1": "0a077756089c4ee46ca6bc997d3ee7e0aa9a156e",
-      "size": 7270
+      "size": 7066
     },
     "game_downloader.py": {
       "sha1": "fe369247e4d9cdd06210aa8d566d93db9dc6c3cd",
@@ -26,31 +26,31 @@
     },
     "version_manager.py": {
       "sha1": "321b3dde2552de4fe06a82b15b225a82c061a173",
-      "size": 5230
+      "size": 5108
     },
     "mod_updater.py": {
       "sha1": "297833f791d0d10d9ef5aad0c2ec4dfbce9d4867",
-      "size": 6314
+      "size": 6162
     },
     "skin_manager.py": {
       "sha1": "f7f557b1afe16c8660cb9fa5a86c4b5c31b6ef8f",
-      "size": 6785
+      "size": 6629
     },
     "pack_distributor.py": {
       "sha1": "6629a6e3b419ccbc8adfd8dc1cf267fc15ad26e0",
-      "size": 4748
+      "size": 4638
     },
     "github_sync.py": {
       "sha1": "781320824da01580a6f79b4c6e390c5b756d6e24",
-      "size": 10076
+      "size": 9837
     },
     "launcher_updater.py": {
-      "sha1": "0800ee7839e3586134d950bf9d6a51cf4d7eee9b",
-      "size": 8789
+      "sha1": "bc2cbe331a994c86960b7a14a95b25a856cf2599",
+      "size": 9412
     },
     "push_to_github.py": {
       "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",
-      "size": 8680
+      "size": 8470
     },
     "publisher_gui.py": {
       "sha1": "8ad02b9e0527a748ee6bac345e758e1fc9c1ce5d",

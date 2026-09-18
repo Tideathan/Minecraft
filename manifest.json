@@ -1,7 +1,7 @@
 {
   "build_name": "Minecraft NeoForge 1.21.1 Clean Build",
   "version": "1.0.0",
-  "updated_at": "2026-09-18 20:21:35",
+  "updated_at": "2026-09-18 20:29:58",
   "neoforge_version": "21.1.250",
   "total_files": 656,
   "files": {
@@ -242,8 +242,8 @@
       "size": 254417
     },
     "mods/create_factory-0.7b-1.21.1.jar": {
-      "sha1": "fa87a998861c0c9f6639afb19c37582b6d7161df",
-      "size": 571517976
+      "sha1": "68cab13e1f1b7c3e3cf9e56e19c868d7d0f0bb52",
+      "size": 212765
     },
     "mods/create_hypertube-0.6.0-NEOFORGE.jar": {
       "sha1": "8004b4b3959364609906ea4d7bf409add879a222",

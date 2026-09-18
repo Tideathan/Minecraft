@@ -1,0 +1,72 @@
+{
+  "name": "Minecraft NeoForge Launcher",
+  "version": "1.0.0",
+  "release_date": "2026-09-18",
+  "changelog": "Initial release of Minecraft NeoForge Launcher with installer and updater",
+  "files": {
+    "launcher.py": {
+      "sha1": "4376b97a10a106f192d5dea22f553fb0357c7f31",
+      "size": 61460
+    },
+    "launcher_core.py": {
+      "sha1": "a8cf9d0be8587c2b3fb3e3e2f4a8cb23035df039",
+      "size": 6976
+    },
+    "java_manager.py": {
+      "sha1": "2d6bed7f7f6199f80a558f40c04d831f253e13f7",
+      "size": 6466
+    },
+    "version_manager.py": {
+      "sha1": "98c5fb522909ff4613cc46dce5bf3d9010ccf6a4",
+      "size": 3908
+    },
+    "mod_updater.py": {
+      "sha1": "867fdd8c95a6ccd68ef4ab2c7a2895ee40900503",
+      "size": 6134
+    },
+    "skin_manager.py": {
+      "sha1": "f3b7ffffe721255a8cbd98bb2aed5e09c597a6b1",
+      "size": 6623
+    },
+    "github_sync.py": {
+      "sha1": "d1c59adc07c35a0f6c88cef3153aa65b048a52fb",
+      "size": 8373
+    },
+    "launcher_updater.py": {
+      "sha1": "7c5a83bcec43f7437c98f03572aa9f5f531d80d0",
+      "size": 6357
+    },
+    "push_to_github.py": {
+      "sha1": "a017c6e25c8fa48d5a00dbea56a0ce2f11712314",
+      "size": 8367
+    },
+    "Launcher.bat": {
+      "sha1": "fc657e5e175ed95191eb904ea5ff7fd75b127163",
+      "size": 50
+    },
+    "Launcher.vbs": {
+      "sha1": "b23c456efe8c61c2c14a59f8737bdbd457e944e5",
+      "size": 165
+    },
+    "launcher_icon.ico": {
+      "sha1": "fa89b3972a960492692c032c1c1ff96e054b4774",
+      "size": 91676
+    },
+    "launcher_icon.png": {
+      "sha1": "e268bd7fd57bf7523a70d8b4903595273bb4ed94",
+      "size": 672446
+    },
+    "minecraft_wolf.ico": {
+      "sha1": "fa89b3972a960492692c032c1c1ff96e054b4774",
+      "size": 91676
+    },
+    "installer.py": {
+      "sha1": "e0d864d8c904dc2e0d2947f25a7a8fda6ced14e9",
+      "size": 12376
+    },
+    "Minecraft_Launcher_Setup.exe": {
+      "sha1": "545b1680518807f8d64122961f7c36a28ef4e226",
+      "size": 33060107
+    }
+  }
+}

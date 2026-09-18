@@ -1,0 +1,6 @@
+.git/
+*.tmp
+*.download
+build/
+dist/
+__pycache__/

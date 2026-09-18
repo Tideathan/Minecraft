@@ -2,6 +2,7 @@ import os
 import json
 import hashlib
 import urllib.request
+import urllib.parse
 import shutil
 
 _CURR_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -58,7 +59,8 @@ def normalize_repo_slug(url_or_slug):
 def get_raw_url(repo_slug, file_path, branch="main"):
     slug = normalize_repo_slug(repo_slug)
     clean_p = file_path.replace("\\", "/").lstrip("/")
-    return f"https://raw.githubusercontent.com/{slug}/{branch}/{clean_p}"
+    quoted_p = urllib.parse.quote(clean_p, safe="/")
+    return f"https://raw.githubusercontent.com/{slug}/{branch}/{quoted_p}"
 
 def fetch_manifest_from_github(repo_slug, branch="main", token=None):
     slug = normalize_repo_slug(repo_slug)
@@ -170,7 +172,8 @@ def sync_differences(comparison_result, repo_slug, branch="main", token=None, pr
                     prefix = check_f.read(60)
                 if prefix.startswith(b"version https://git-lfs"):
                     clean_p = rel_p.replace("\\", "/").lstrip("/")
-                    media_url = f"https://media.githubusercontent.com/media/{slug}/{branch}/{clean_p}"
+                    quoted_p = urllib.parse.quote(clean_p, safe="/")
+                    media_url = f"https://media.githubusercontent.com/media/{slug}/{branch}/{quoted_p}"
                     headers_lfs = {"User-Agent": "Mozilla/5.0 AntigravityLauncher/1.0"}
                     if token:
                         headers_lfs["Authorization"] = f"token {token}"

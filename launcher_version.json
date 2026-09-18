@@ -1,12 +1,12 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "release_date": "2026-09-18",
-  "changelog": "Релиз 1.1.1: полная синхронизация сборки, устранение расхождений в хешах конфигов и финальный цикл",
+  "changelog": "Патч 1.1.2: URL-encoding для пробелов и спецсимволов в путях файлов модов и конфигов",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "0c1a9d5f96baf03d56425bb3d83211adeb5648b6",
-      "size": 32381855
+      "sha1": "aea7eb0769f400463095e6a009b7ed74256f2a99",
+      "size": 32382075
     },
     "launcher.py": {
       "sha1": "079f739bf5db83e2ed4d7cbcc1fedc1c82e87f28",
@@ -41,12 +41,12 @@
       "size": 4638
     },
     "github_sync.py": {
-      "sha1": "721e3849536783aa0c2a3564614e31831bd66e03",
-      "size": 10378
+      "sha1": "1a542cc02dd00d0f51b13ff0f91863383139294f",
+      "size": 10522
     },
     "launcher_updater.py": {
-      "sha1": "162f910cca5df542d57baa94baad9d8bf9ee24ee",
-      "size": 9431
+      "sha1": "d2d3ec432c003ec5535c935bf47d80c1390e8c50",
+      "size": 9513
     },
     "push_to_github.py": {
       "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",
@@ -69,8 +69,8 @@
       "size": 50
     },
     "Launcher.vbs": {
-      "sha1": "d250945cb093d005390e4f23fa02d2bca4511a03",
-      "size": 223
+      "sha1": "ff63c9d6a812a9bfcdcdd58c22b20748de5ffcba",
+      "size": 177
     },
     "launcher_icon.ico": {
       "sha1": "fa89b3972a960492692c032c1c1ff96e054b4774",
@@ -89,8 +89,8 @@
       "size": 15314
     },
     "Minecraft_Launcher_Setup.exe": {
-      "sha1": "86da8ae220792445118cd449ec022931f2368349",
-      "size": 65188264
+      "sha1": "013113f5f8c6fd122830464563db9fe5cbd32080",
+      "size": 65188883
     }
   }
 }

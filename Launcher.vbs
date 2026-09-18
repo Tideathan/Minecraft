@@ -1,4 +1,3 @@
 Set WshShell = CreateObject("WScript.Shell")
-Set FSO = CreateObject("Scripting.FileSystemObject")
-WshShell.CurrentDirectory = FSO.GetParentFolderName(WScript.ScriptFullName)
+WshShell.CurrentDirectory = "C:\Users\user\AppData\Roaming\.minecraft\launcher"
 WshShell.Run "pythonw.exe launcher.py", 0, False

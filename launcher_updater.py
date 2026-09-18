@@ -4,10 +4,11 @@ import json
 import time
 import hashlib
 import urllib.request
+import urllib.parse
 import shutil
 import subprocess
 
-CURRENT_LAUNCHER_VERSION = "1.1.1"
+CURRENT_LAUNCHER_VERSION = "1.1.2"
 DEFAULT_REPO_SLUG = "Tideathan/Minecraft"
 LAUNCHER_BRANCH = "launcher"
 
@@ -167,7 +168,8 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
         if progress_callback:
             progress_callback(i / total_files * 0.8, f"Загрузка файла: {rel_path}...")
 
-        raw_url = f"https://raw.githubusercontent.com/{slug}/{ref}/{rel_path.replace('\\', '/')}"
+        quoted_rel = urllib.parse.quote(rel_path.replace('\\', '/'), safe='/')
+        raw_url = f"https://raw.githubusercontent.com/{slug}/{ref}/{quoted_rel}"
         if not update_info.get("commit_sha"):
             raw_url += f"?_nocache={int(time.time())}"
         dest_local = os.path.join(LAUNCHER_DIR, rel_path)

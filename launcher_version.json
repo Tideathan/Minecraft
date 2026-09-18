@@ -1,16 +1,16 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "release_date": "2026-09-18",
-  "changelog": "Нормализация хешей для всех платформ и проверка обновления лаунчера",
+  "changelog": "Релиз 1.0.7: автообновление, обход кэша CDN и чистая загрузка игры",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "0eb5fa511fb4ab6287f2d29ade50ce6a930becc7",
-      "size": 32378828
+      "sha1": "cf0e91bbd60680bcb6775f6633b846de1ab8289c",
+      "size": 32379688
     },
     "launcher.py": {
-      "sha1": "7116cf8497a7238b87bb0982cf4d1926c207f081",
-      "size": 72834
+      "sha1": "079f739bf5db83e2ed4d7cbcc1fedc1c82e87f28",
+      "size": 74679
     },
     "launcher_core.py": {
       "sha1": "0a077756089c4ee46ca6bc997d3ee7e0aa9a156e",
@@ -45,12 +45,24 @@
       "size": 10076
     },
     "launcher_updater.py": {
-      "sha1": "079038609cfb9d04c6baf8c4bee50545fca0f9b9",
-      "size": 8669
+      "sha1": "200a9b913437d05f0343fac7ba97a28a107168bc",
+      "size": 8830
     },
     "push_to_github.py": {
       "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",
       "size": 8680
+    },
+    "publisher_gui.py": {
+      "sha1": "8ad02b9e0527a748ee6bac345e758e1fc9c1ce5d",
+      "size": 23668
+    },
+    "Publisher.bat": {
+      "sha1": "b224a9ab235c53f02fa71ac12770674a37ddc680",
+      "size": 55
+    },
+    "Publisher.vbs": {
+      "sha1": "0e7810a4c2e5da18187db03d7f89e930a2892268",
+      "size": 170
     },
     "Launcher.bat": {
       "sha1": "fc657e5e175ed95191eb904ea5ff7fd75b127163",
@@ -73,12 +85,12 @@
       "size": 91676
     },
     "installer.py": {
-      "sha1": "bc9e92cb5d03f637ac4c2c2853510e2786f866ed",
-      "size": 15248
+      "sha1": "856bf618b16e3ce13dd45de44366271fc3d144a0",
+      "size": 15314
     },
     "Minecraft_Launcher_Setup.exe": {
-      "sha1": "2d0a0fd197a7d3b1cbb5af21bc465a4c8dc0e911",
-      "size": 65178528
+      "sha1": "0e5278345db787adee6dce6108b867c97f30efb7",
+      "size": 65185273
     }
   }
 }

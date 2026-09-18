@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import time
 import hashlib
 import urllib.request
 import shutil
@@ -24,9 +25,13 @@ LAUNCHER_FILES = [
     "version_manager.py",
     "mod_updater.py",
     "skin_manager.py",
+    "pack_distributor.py",
     "github_sync.py",
     "launcher_updater.py",
     "push_to_github.py",
+    "publisher_gui.py",
+    "Publisher.bat",
+    "Publisher.vbs",
     "Launcher.bat",
     "Launcher.vbs",
     "launcher_icon.ico",
@@ -89,7 +94,7 @@ def check_file_matches(filepath, expected_sha1):
 
 def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, token=None):
     slug = normalize_slug(repo_slug)
-    url = f"https://raw.githubusercontent.com/{slug}/{branch}/launcher_version.json"
+    url = f"https://raw.githubusercontent.com/{slug}/{branch}/launcher_version.json?_nocache={int(time.time())}"
     headers = {
         "User-Agent": "AntigravityLauncherUpdater/1.0",
         "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -146,7 +151,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
         if progress_callback:
             progress_callback(i / total_files * 0.8, f"Загрузка файла: {rel_path}...")
 
-        raw_url = f"https://raw.githubusercontent.com/{slug}/{branch}/{rel_path.replace('\\', '/')}"
+        raw_url = f"https://raw.githubusercontent.com/{slug}/{branch}/{rel_path.replace('\\', '/')}?_nocache={int(time.time())}"
         dest_local = os.path.join(LAUNCHER_DIR, rel_path)
         temp_dest = dest_local + ".new_update"
         os.makedirs(os.path.dirname(temp_dest), exist_ok=True)

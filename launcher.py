@@ -644,6 +644,20 @@ class ModernLauncherApp(ctk.CTk):
         )
         btn_export_zip.pack(side="left", padx=6, pady=8)
 
+        btn_publisher = ctk.CTkButton(
+            author_card,
+            text="📦 Публикатор сборки и лаунчера",
+            height=30,
+            font=ctk.CTkFont(size=11, weight="bold"),
+            fg_color=COLOR_BTN_SEC,
+            hover_color=COLOR_BTN_SEC_HOVER,
+            border_width=1,
+            border_color=COLOR_BTN_SEC_BORDER,
+            text_color=COLOR_TEXT_PRIMARY,
+            command=self.open_publisher_tool
+        )
+        btn_publisher.pack(side="left", padx=6, pady=8)
+
     # --- TAB 3: MODS ---
     def setup_tab_mods(self):
         tab = self.tab_mods
@@ -844,6 +858,19 @@ class ModernLauncherApp(ctk.CTk):
         )
         self.btn_check_launcher_update.pack(side="left")
 
+        self.btn_open_publisher = ctk.CTkButton(
+            row_lu,
+            text="🚀 Опубликовать обновление",
+            font=ctk.CTkFont(size=12, weight="bold"),
+            fg_color=COLOR_BTN_SEC,
+            hover_color=COLOR_BTN_SEC_HOVER,
+            border_width=1,
+            border_color=COLOR_BTN_SEC_BORDER,
+            text_color=COLOR_TEXT_PRIMARY,
+            command=self.open_publisher_tool
+        )
+        self.btn_open_publisher.pack(side="left", padx=(10, 0))
+
         self.launcher_update_progress = ctk.CTkProgressBar(card_launcher)
         self.launcher_update_progress.set(0)
         self.launcher_update_progress.pack(fill="x", padx=16, pady=(0, 6))
@@ -1029,6 +1056,22 @@ class ModernLauncherApp(ctk.CTk):
                 self.after(0, lambda err=e: messagebox.showerror("Ошибка", f"Ошибка публикации: {err}"))
 
         threading.Thread(target=worker, daemon=True).start()
+
+    def open_publisher_tool(self):
+        pub_exe = os.path.join(LAUNCHER_DIR, "Minecraft_Publisher.exe")
+        if not os.path.exists(pub_exe):
+            pub_exe = os.path.join(MC_DIR, "Minecraft_Publisher.exe")
+        if not os.path.exists(pub_exe):
+            pub_exe = os.path.expanduser(r"~\Desktop\Minecraft_Publisher.exe")
+        
+        if os.path.exists(pub_exe):
+            subprocess.Popen([pub_exe], cwd=LAUNCHER_DIR)
+        else:
+            py_file = os.path.join(LAUNCHER_DIR, "publisher_gui.py")
+            if os.path.exists(py_file):
+                subprocess.Popen([sys.executable, py_file], cwd=LAUNCHER_DIR)
+            else:
+                messagebox.showerror("Ошибка", "Minecraft_Publisher.exe не найден.")
 
     # --- LAUNCHER SELF-UPDATE LOGIC ---
     def start_check_launcher_update(self):

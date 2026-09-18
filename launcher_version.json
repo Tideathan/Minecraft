@@ -1,19 +1,19 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "release_date": "2026-09-18",
-  "changelog": "Надежное автообновление лаунчера с нормализацией хешей и безопасной заменой файлов",
+  "changelog": "Нормализация хешей для всех платформ и проверка обновления лаунчера",
   "files": {
     "Minecraft_Launcher.exe": {
       "sha1": "0eb5fa511fb4ab6287f2d29ade50ce6a930becc7",
       "size": 32378828
     },
     "launcher.py": {
-      "sha1": "be3ebe77f95105117a90ce9d6dacbe0e42a81440",
+      "sha1": "7116cf8497a7238b87bb0982cf4d1926c207f081",
       "size": 72834
     },
     "launcher_core.py": {
-      "sha1": "1312428eddff37f65b28a3299c2835a7806919ba",
+      "sha1": "0a077756089c4ee46ca6bc997d3ee7e0aa9a156e",
       "size": 7270
     },
     "game_downloader.py": {
@@ -25,31 +25,31 @@
       "size": 7156
     },
     "version_manager.py": {
-      "sha1": "151496a97c6035d693152e41ecac3f47c3acd16e",
+      "sha1": "321b3dde2552de4fe06a82b15b225a82c061a173",
       "size": 5230
     },
     "mod_updater.py": {
-      "sha1": "5365d9023c5b967e6be887e5e9a7089f20da1d58",
+      "sha1": "297833f791d0d10d9ef5aad0c2ec4dfbce9d4867",
       "size": 6314
     },
     "skin_manager.py": {
-      "sha1": "54082bc33735b61120d9d6164779f6cf147752be",
+      "sha1": "f7f557b1afe16c8660cb9fa5a86c4b5c31b6ef8f",
       "size": 6785
     },
     "pack_distributor.py": {
-      "sha1": "928cb82c8e7d20a6bb65c72a3d5b1fb286181bc2",
+      "sha1": "6629a6e3b419ccbc8adfd8dc1cf267fc15ad26e0",
       "size": 4748
     },
     "github_sync.py": {
-      "sha1": "c98575bb27423ea9b9497aacc940674cf92adf90",
+      "sha1": "781320824da01580a6f79b4c6e390c5b756d6e24",
       "size": 10076
     },
     "launcher_updater.py": {
-      "sha1": "3d1a8c8cdfe99ed2ed7cd2077a1aadc9a4508f1e",
-      "size": 8320
+      "sha1": "079038609cfb9d04c6baf8c4bee50545fca0f9b9",
+      "size": 8669
     },
     "push_to_github.py": {
-      "sha1": "28641fed98e23ebfbb4a311b7b5554041506c238",
+      "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",
       "size": 8680
     },
     "Launcher.bat": {

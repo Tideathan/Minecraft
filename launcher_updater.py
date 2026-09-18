@@ -53,6 +53,11 @@ def normalize_slug(url_or_slug):
     return s.strip("/")
 
 def calculate_sha1(filepath):
+    ext = os.path.splitext(filepath)[1].lower()
+    if ext in [".py", ".bat", ".vbs", ".json", ".txt", ".md"]:
+        with open(filepath, "rb") as f:
+            data = f.read().replace(b"\r\n", b"\n")
+        return hashlib.sha1(data).hexdigest()
     h = hashlib.sha1()
     with open(filepath, "rb") as f:
         while chunk := f.read(65536):
@@ -65,17 +70,21 @@ def check_file_matches(filepath, expected_sha1):
     actual = calculate_sha1(filepath)
     if actual.lower() == expected_sha1.lower():
         return True
-    # If text file, check normalized line endings (CRLF vs LF)
-    ext = os.path.splitext(filepath)[1].lower()
-    if ext in [".py", ".bat", ".vbs", ".json", ".txt", ".md"]:
-        try:
-            with open(filepath, "rb") as f:
-                data = f.read().replace(b"\r\n", b"\n")
-            norm_sha = hashlib.sha1(data).hexdigest()
-            if norm_sha.lower() == expected_sha1.lower():
-                return True
-        except Exception:
-            pass
+    # Also check raw binary or CRLF conversion just in case
+    try:
+        h = hashlib.sha1()
+        with open(filepath, "rb") as f:
+            while chunk := f.read(65536):
+                h.update(chunk)
+        if h.hexdigest().lower() == expected_sha1.lower():
+            return True
+        with open(filepath, "rb") as f:
+            raw = f.read()
+        crlf_sha = hashlib.sha1(raw.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest()
+        if crlf_sha.lower() == expected_sha1.lower():
+            return True
+    except Exception:
+        pass
     return False
 
 def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, token=None):

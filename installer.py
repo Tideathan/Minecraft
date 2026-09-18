@@ -1,5 +1,19 @@
 import os
 import sys
+
+APP_USER_MODEL_ID = "tideathan.minecraft.installer.v1"
+LAUNCHER_APP_ID = "tideathan.minecraft.launcher.v1"
+if sys.platform == "win32":
+    try:
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_USER_MODEL_ID)
+        try:
+            ctypes.windll.shcore.SetProcessDpiAwareness(1)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
 import shutil
 import subprocess
 import tkinter as tk
@@ -15,8 +29,10 @@ else:
 DEFAULT_INSTALL_DIR = os.path.normpath(os.path.expandvars(r"%APPDATA%\.minecraft"))
 
 LAUNCHER_FILES = [
+    "Minecraft_Launcher.exe",
     "launcher.py",
     "launcher_core.py",
+    "game_downloader.py",
     "java_manager.py",
     "version_manager.py",
     "mod_updater.py",
@@ -46,18 +62,35 @@ DEFAULT_CONFIG_CONTENT = {
     "cloud_sync_url": ""
 }
 
-def create_windows_shortcut(target_path, shortcut_path, working_dir, icon_path="", description=""):
+def create_windows_shortcut(target_path, shortcut_path, working_dir, arguments="", icon_path="", description="", app_user_model_id=LAUNCHER_APP_ID):
     try:
         import win32com.client
         shell = win32com.client.Dispatch("WScript.Shell")
         shortcut = shell.CreateShortCut(shortcut_path)
         shortcut.TargetPath = target_path
+        if arguments:
+            shortcut.Arguments = arguments
         shortcut.WorkingDirectory = working_dir
         if icon_path and os.path.exists(icon_path):
             shortcut.IconLocation = f"{icon_path},0"
         if description:
             shortcut.Description = description
         shortcut.Save()
+
+        if app_user_model_id:
+            try:
+                from win32com.propsys import propsys, pscon
+                store = propsys.SHGetPropertyStoreFromParsingName(shortcut_path, None, 2)
+                val = propsys.PROPVARIANTType(app_user_model_id)
+                store.SetValue(pscon.PKEY_AppUserModel_ID, val)
+                store.Commit()
+            except Exception:
+                pass
+        try:
+            import ctypes
+            ctypes.windll.shell32.SHChangeNotify(0x08000000, 0x0000, None, None)
+        except Exception:
+            pass
         return True
     except Exception:
         # Fallback via PowerShell
@@ -65,8 +98,10 @@ def create_windows_shortcut(target_path, shortcut_path, working_dir, icon_path="
             f'$WshShell = New-Object -ComObject WScript.Shell; '
             f'$Shortcut = $WshShell.CreateShortcut("{shortcut_path}"); '
             f'$Shortcut.TargetPath = "{target_path}"; '
-            f'$Shortcut.WorkingDirectory = "{working_dir}"; '
         )
+        if arguments:
+            ps_cmd += f'$Shortcut.Arguments = \'{arguments}\'; '
+        ps_cmd += f'$Shortcut.WorkingDirectory = "{working_dir}"; '
         if icon_path and os.path.exists(icon_path):
             ps_cmd += f'$Shortcut.IconLocation = "{icon_path},0"; '
         if description:
@@ -268,14 +303,22 @@ class InstallerApp(ctk.CTk):
                     rvf.write(f'WshShell.Run "pythonw.exe launcher.py", 0, False\n')
 
                 wscript_path = os.path.join(os.environ.get("WINDIR", "C:\\Windows"), "System32", "wscript.exe")
+                launcher_target = wscript_path
+                launcher_args = f'"{vbs_launcher}"'
+
+                compiled_launcher = os.path.join(launcher_dir, "Minecraft_Launcher.exe")
+                if os.path.exists(compiled_launcher):
+                    launcher_target = compiled_launcher
+                    launcher_args = ""
                 
                 if self.chk_desktop.get():
                     desktop = os.path.join(os.path.expanduser("~"), "Desktop")
                     shortcut_desktop = os.path.join(desktop, "Minecraft NeoForge Launcher.lnk")
                     create_windows_shortcut(
-                        target_path=wscript_path,
+                        target_path=launcher_target,
                         shortcut_path=shortcut_desktop,
                         working_dir=launcher_dir,
+                        arguments=launcher_args,
                         icon_path=wolf_ico,
                         description="Minecraft NeoForge 1.21.1 Launcher"
                     )
@@ -286,9 +329,10 @@ class InstallerApp(ctk.CTk):
                         start_menu = os.path.join(appdata, r"Microsoft\Windows\Start Menu\Programs")
                         shortcut_sm = os.path.join(start_menu, "Minecraft NeoForge Launcher.lnk")
                         create_windows_shortcut(
-                            target_path=wscript_path,
+                            target_path=launcher_target,
                             shortcut_path=shortcut_sm,
                             working_dir=launcher_dir,
+                            arguments=launcher_args,
                             icon_path=wolf_ico,
                             description="Minecraft NeoForge 1.21.1 Launcher"
                         )

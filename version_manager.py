@@ -67,16 +67,32 @@ def install_neoforge_version(neoforge_ver, java_exe, progress_callback=None):
     installer_path = os.path.join(temp_dir, f"neoforge-{neoforge_ver}-installer.jar")
 
     try:
+        # Ensure launcher_profiles.json exists (required by NeoForge installer)
+        lp_path = os.path.join(MC_DIR, "launcher_profiles.json")
+        if not os.path.exists(lp_path):
+            with open(lp_path, "w", encoding="utf-8") as lpf:
+                json.dump({"profiles": {}}, lpf, indent=2)
+
         if progress_callback:
-            progress_callback(0.1, f"Скачивание инсталлера NeoForge {neoforge_ver}...")
+            progress_callback(0.1, f"Скачивание установщика NeoForge {neoforge_ver}...")
 
-        urllib.request.urlretrieve(installer_url, installer_path)
+        req = urllib.request.Request(installer_url, headers={"User-Agent": "AntigravityLauncher/1.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp, open(installer_path, "wb") as out_f:
+            while chunk := resp.read(65536):
+                out_f.write(chunk)
 
         if progress_callback:
-            progress_callback(0.4, f"Установка NeoForge {neoforge_ver}...")
+            progress_callback(0.35, f"Установка NeoForge {neoforge_ver} (загрузка библиотек Mojang и сборки)...")
 
-        cmd = [java_exe, "-jar", installer_path, "--install-client", MC_DIR]
-        res = subprocess.run(cmd, capture_output=True, text=True)
+        # Resolve java.exe for console execution
+        runner = java_exe
+        if "javaw.exe" in runner.lower():
+            cand = os.path.join(os.path.dirname(runner), "java.exe")
+            if os.path.exists(cand):
+                runner = cand
+
+        cmd = [runner, "-jar", installer_path, "--install-client", MC_DIR]
+        res = subprocess.run(cmd, cwd=MC_DIR, capture_output=True, text=True)
 
         if progress_callback:
             progress_callback(0.9, "Очистка временных файлов...")
@@ -87,8 +103,16 @@ def install_neoforge_version(neoforge_ver, java_exe, progress_callback=None):
             except Exception:
                 pass
 
+        log_p = os.path.join(MC_DIR, "neoforge-installer.jar.log")
+        if os.path.exists(log_p):
+            try:
+                os.remove(log_p)
+            except Exception:
+                pass
+
         if res.returncode != 0:
-            return False, f"Ошибка (код {res.returncode}): {res.stderr[:300]}"
+            err_msg = res.stderr.strip() or res.stdout.strip()
+            return False, f"Ошибка установки NeoForge (код {res.returncode}): {err_msg[:300]}"
 
         if progress_callback:
             progress_callback(1.0, f"NeoForge {neoforge_ver} успешно установлен!")

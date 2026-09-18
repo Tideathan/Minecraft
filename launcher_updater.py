@@ -16,8 +16,10 @@ MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CU
 BACKUP_DIR = os.path.join(MC_DIR, "..", ".minecraft_backup", "launcher_updates")
 
 LAUNCHER_FILES = [
+    "Minecraft_Launcher.exe",
     "launcher.py",
     "launcher_core.py",
+    "game_downloader.py",
     "java_manager.py",
     "version_manager.py",
     "mod_updater.py",

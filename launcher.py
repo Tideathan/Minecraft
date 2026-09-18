@@ -1,5 +1,19 @@
 import os
 import sys
+
+# Modern Windows Taskbar & Start Menu integration
+APP_USER_MODEL_ID = "tideathan.minecraft.launcher.v1"
+if sys.platform == "win32":
+    try:
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_USER_MODEL_ID)
+        try:
+            ctypes.windll.shcore.SetProcessDpiAwareness(1)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
 import json
 import subprocess
 import threading
@@ -51,6 +65,7 @@ from launcher_updater import (
     apply_launcher_update,
     restart_launcher
 )
+from game_downloader import check_game_status, download_everything_auto
 
 LAUNCHER_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(MC_DIR, "launcher_config.json")
@@ -120,6 +135,77 @@ def save_config(cfg):
     except Exception as e:
         print(f"Error saving config: {e}")
 
+def ensure_windows_shortcuts():
+    """Ensure Start Menu and Desktop shortcuts exist with wolf icon and AppUserModelID."""
+    if sys.platform != "win32":
+        return
+    try:
+        appdata = os.environ.get("APPDATA", "")
+        if not appdata:
+            return
+        sm_dir = os.path.join(appdata, r"Microsoft\Windows\Start Menu\Programs")
+        sm_shortcut = os.path.join(sm_dir, "Minecraft NeoForge Launcher.lnk")
+        desktop_dir = os.path.join(os.path.expanduser("~"), "Desktop")
+        desktop_shortcut = os.path.join(desktop_dir, "Minecraft NeoForge Launcher.lnk")
+
+        wolf_ico = os.path.join(LAUNCHER_DIR, "minecraft_wolf.ico")
+        if not os.path.exists(wolf_ico):
+            wolf_ico = os.path.join(LAUNCHER_DIR, "launcher_icon.ico")
+
+        launcher_exe = os.path.join(LAUNCHER_DIR, "Minecraft_Launcher.exe")
+        vbs_launcher = os.path.join(LAUNCHER_DIR, "Launcher.vbs")
+        wscript_exe = os.path.join(os.environ.get("WINDIR", "C:\\Windows"), "System32", "wscript.exe")
+
+        if os.path.exists(launcher_exe):
+            target = launcher_exe
+            args = ""
+        elif os.path.exists(vbs_launcher):
+            target = wscript_exe
+            args = f'"{vbs_launcher}"'
+        else:
+            return
+
+        import win32com.client
+        shell = win32com.client.Dispatch("WScript.Shell")
+
+        # Start Menu Shortcut
+        sc_sm = shell.CreateShortCut(sm_shortcut)
+        sc_sm.TargetPath = target
+        if args:
+            sc_sm.Arguments = args
+        sc_sm.WorkingDirectory = LAUNCHER_DIR
+        if os.path.exists(wolf_ico):
+            sc_sm.IconLocation = f"{wolf_ico},0"
+        sc_sm.Description = "Minecraft NeoForge 1.21.1 Launcher"
+        sc_sm.Save()
+
+        # Desktop Shortcut
+        sc_dt = shell.CreateShortCut(desktop_shortcut)
+        sc_dt.TargetPath = target
+        if args:
+            sc_dt.Arguments = args
+        sc_dt.WorkingDirectory = LAUNCHER_DIR
+        if os.path.exists(wolf_ico):
+            sc_dt.IconLocation = f"{wolf_ico},0"
+        sc_dt.Description = "Minecraft NeoForge 1.21.1 Launcher"
+        sc_dt.Save()
+
+        # Set AppUserModelID property on shortcuts
+        try:
+            from win32com.propsys import propsys, pscon
+            for sc_file in [sm_shortcut, desktop_shortcut]:
+                if os.path.exists(sc_file):
+                    store = propsys.SHGetPropertyStoreFromParsingName(sc_file, None, 2)
+                    val = propsys.PROPVARIANTType(APP_USER_MODEL_ID)
+                    store.SetValue(pscon.PKEY_AppUserModel_ID, val)
+                    store.Commit()
+            import ctypes
+            ctypes.windll.shell32.SHChangeNotify(0x08000000, 0x0000, None, None)
+        except Exception:
+            pass
+    except Exception:
+        pass
+
 class ModernLauncherApp(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -139,8 +225,19 @@ class ModernLauncherApp(ctk.CTk):
         if os.path.exists(ICON_ICO_PATH):
             try:
                 self.iconbitmap(ICON_ICO_PATH)
+                self.wm_iconbitmap(ICON_ICO_PATH)
             except Exception:
                 pass
+
+        if os.path.exists(ICON_PNG_PATH):
+            try:
+                from PIL import ImageTk
+                self._app_icon_photo = ImageTk.PhotoImage(file=ICON_PNG_PATH)
+                self.iconphoto(True, self._app_icon_photo)
+            except Exception:
+                pass
+
+        threading.Thread(target=ensure_windows_shortcuts, daemon=True).start()
 
         self.game_process = None
         self.detected_javas = []
@@ -402,7 +499,22 @@ class ModernLauncherApp(ctk.CTk):
             border_color=COLOR_BTN_PLAY_BORDER,
             command=self.launch_game
         )
-        self.btn_play.pack(pady=(4, 12))
+        self.btn_play.pack(pady=(4, 6))
+
+        self.btn_quick_download_all = ctk.CTkButton(
+            play_card,
+            text="⚡ Скачать всё (авто-установка с нуля)",
+            height=32,
+            width=260,
+            font=ctk.CTkFont(size=12, weight="bold"),
+            fg_color=COLOR_BTN_SEC,
+            hover_color=COLOR_BTN_SEC_HOVER,
+            border_width=1,
+            border_color=COLOR_BTN_SEC_BORDER,
+            text_color=COLOR_TEXT_PRIMARY,
+            command=self.start_download_everything
+        )
+        self.btn_quick_download_all.pack(pady=(0, 8))
 
         self.lbl_status = ctk.CTkLabel(
             play_card,
@@ -463,12 +575,35 @@ class ModernLauncherApp(ctk.CTk):
         )
         self.btn_sync_github.pack(side="left", padx=4)
 
+        # Quick Auto-Install All Card
+        card_auto_all = ctk.CTkFrame(tab, corner_radius=10, fg_color=COLOR_CARD_BG, border_width=1, border_color=COLOR_CARD_BORDER)
+        card_auto_all.pack(fill="x", padx=16, pady=(0, 6))
+
+        row_auto = ctk.CTkFrame(card_auto_all, fg_color="transparent")
+        row_auto.pack(fill="x", padx=14, pady=8)
+
+        txt_info = "⚡ ПОЛНАЯ АВТО-УСТАНОВКА «ВСЁ ВКЛЮЧЕНО» (ДЛЯ ЧИСТЫХ ПК):\nСкачает Adoptium Java 21, ядро NeoForge 21.1.250 с библиотеками, звуки и всю сборку с GitHub."
+        ctk.CTkLabel(row_auto, text=txt_info, font=ctk.CTkFont(size=11, weight="bold"), text_color=COLOR_TEXT_PRIMARY, justify="left").pack(side="left")
+
+        self.btn_download_everything = ctk.CTkButton(
+            row_auto,
+            text="🚀 СКАЧАТЬ ВСЁ С НУЛЯ",
+            width=190,
+            height=32,
+            font=ctk.CTkFont(size=12, weight="bold"),
+            fg_color=COLOR_ACCENT,
+            hover_color=COLOR_ACCENT_HOVER,
+            text_color="#000000" if self.current_theme_key == "night" else "#ffffff",
+            command=self.start_download_everything
+        )
+        self.btn_download_everything.pack(side="right", padx=(8, 0))
+
         # Progress bar
         self.github_progress = ctk.CTkProgressBar(tab)
         self.github_progress.set(0)
         self.github_progress.pack(fill="x", padx=16, pady=(4, 4))
 
-        self.lbl_github_status = ctk.CTkLabel(tab, text="Укажите репозиторий и нажмите 'Проверить версию на GitHub'", font=ctk.CTkFont(size=12), text_color=COLOR_TEXT_SECONDARY)
+        self.lbl_github_status = ctk.CTkLabel(tab, text="Укажите репозиторий и нажмите 'Проверить версию на GitHub' или 'СКАЧАТЬ ВСЁ С НУЛЯ'", font=ctk.CTkFont(size=12), text_color=COLOR_TEXT_SECONDARY)
         self.lbl_github_status.pack(anchor="w", padx=16, pady=(0, 6))
 
         # Diff View Frame
@@ -755,6 +890,9 @@ class ModernLauncherApp(ctk.CTk):
     def log(self, text):
         try:
             self.console_text.insert("end", text + "\n")
+            line_count = int(self.console_text.index("end-1c").split(".")[0])
+            if line_count > 2000:
+                self.console_text.delete("1.0", f"{line_count - 2000}.0")
             self.console_text.see("end")
         except Exception:
             pass
@@ -1311,11 +1449,105 @@ class ModernLauncherApp(ctk.CTk):
             pass
         save_config(self.cfg)
 
+    # --- FULL AUTO INSTALLER (DOWNLOAD EVERYTHING) ---
+    def start_download_everything(self):
+        repo = self.entry_github_repo.get().strip() if hasattr(self, "entry_github_repo") else "Tideathan/Minecraft"
+        if not repo:
+            repo = "Tideathan/Minecraft"
+
+        confirm = messagebox.askyesno(
+            "Полная загрузка и установка",
+            f"Лаунчер автоматически скачает и настроит всё необходимое для игры:\n\n"
+            f"1. Adoptium OpenJDK Java 21 (если не найдена)\n"
+            f"2. Ядро NeoForge 21.1.250 и библиотеки Mojang\n"
+            f"3. Ванильные звуки и текстуры (Assets 1.21.1)\n"
+            f"4. Сборку модов, конфигов и шейдеров с GitHub ({repo})\n\n"
+            f"Запустить полную загрузку?"
+        )
+        if not confirm:
+            return
+
+        self.tabview.set("📋 Консоль")
+        self.log("\n==================================================")
+        self.log("   НАЧАЛО ПОЛНОЙ АВТО-УСТАНОВКИ «СКАЧАТЬ ВСЁ»     ")
+        self.log(f"   Репозиторий сборки: {repo}")
+        self.log("==================================================\n")
+
+        self.lbl_status.configure(text="Выполняется полная установка сборки...")
+        self.btn_play.configure(state="disabled")
+        if hasattr(self, "btn_download_everything"):
+            self.btn_download_everything.configure(state="disabled")
+        if hasattr(self, "btn_quick_download_all"):
+            self.btn_quick_download_all.configure(state="disabled")
+
+        def worker():
+            def _prog(p, t):
+                self.after(0, lambda: (
+                    self.lbl_status.configure(text=t),
+                    self.log(f"[{int(p*100)}%] {t}")
+                ))
+
+            ok, msg = download_everything_auto(
+                repo_slug=repo,
+                branch=self.cfg.get("github_branch", "main"),
+                target_ver=self.cfg.get("version", "neoforge-21.1.250"),
+                progress_callback=_prog,
+                step_callback=lambda step: self.after(0, lambda: self.log(f"\n>>> [ШАГ] {step}"))
+            )
+
+            def _on_finish():
+                self.btn_play.configure(state="normal")
+                if hasattr(self, "btn_download_everything"):
+                    self.btn_download_everything.configure(state="normal")
+                if hasattr(self, "btn_quick_download_all"):
+                    self.btn_quick_download_all.configure(state="normal")
+                self.refresh_all_data()
+
+                if ok:
+                    self.lbl_status.configure(text="✓ Полная установка завершена! Готов к игре.")
+                    self.log(f"\n[УСПЕХ] {msg}\n")
+                    messagebox.showinfo(
+                        "Установка завершена",
+                        "Все компоненты игры, Java 21, ядро NeoForge и сборка модов успешно установлены!\n\nНажмите «ИГРАТЬ» для запуска."
+                    )
+                else:
+                    self.lbl_status.configure(text=f"Ошибка: {msg}")
+                    self.log(f"\n[ОШИБКА] {msg}\n")
+                    messagebox.showerror("Ошибка установки", f"Не удалось завершить автоматическую установку:\n{msg}")
+
+            self.after(0, _on_finish)
+
+        threading.Thread(target=worker, daemon=True).start()
+
     # --- LAUNCH GAME ---
     def launch_game(self):
+        if self.game_process and self.game_process.poll() is None:
+            try:
+                self.log("\n[ACTION] Принудительная остановка процесса игры...")
+                self.game_process.terminate()
+            except Exception as e:
+                self.log(f"[ERROR] Ошибка остановки игры: {e}")
+            return
+
         self.on_config_change()
         username = self.cfg["username"]
         version_id = self.cfg["version"]
+
+        # Check installation readiness
+        status = check_game_status(version_id)
+        if not status["fully_ready"]:
+            miss_str = "\n• " + "\n• ".join(status["missing"])
+            msg = (
+                f"Игра еще не готова к запуску!\n"
+                f"Отсутствуют следующие компоненты:{miss_str}\n\n"
+                f"Скачать и установить всё необходимое автоматически в 1 клик?\n"
+                f"(Лаунчер сам установит Java 21, ядро NeoForge и сборку модов)"
+            )
+            ans = messagebox.askyesno("Требуется установка компонентов", msg)
+            if ans:
+                self.start_download_everything()
+            return
+
         ram_mb = self.cfg["ram_mb"]
         java_path = self.cfg.get("java_path", DEFAULT_JAVA)
         width = self.cfg.get("width", 1280)

@@ -116,7 +116,8 @@ def build_launch_command(
         jvm_args.extend([
             "-XX:+UnlockExperimentalVMOptions",
             "-XX:+UseZGC",
-            "-XX:+ZGenerational"
+            "-XX:+ZGenerational",
+            "-XX:+AlwaysPreTouch"
         ])
     elif gc_type == "G1GC":
         jvm_args.extend([
@@ -125,12 +126,14 @@ def build_launch_command(
             "-XX:G1NewSizePercent=20",
             "-XX:G1ReservePercent=20",
             "-XX:MaxGCPauseMillis=50",
-            "-XX:G1HeapRegionSize=32M"
+            "-XX:G1HeapRegionSize=32M",
+            "-XX:+AlwaysPreTouch"
         ])
     elif gc_type == "Shenandoah":
         jvm_args.extend([
             "-XX:+UnlockExperimentalVMOptions",
-            "-XX:+UseShenandoahGC"
+            "-XX:+UseShenandoahGC",
+            "-XX:+AlwaysPreTouch"
         ])
 
     log_cfg = os.path.join(assets_dir, "log_configs", "client-1.12.xml")

@@ -125,55 +125,65 @@ def find_all_javas():
 
 def download_and_extract_java_21(progress_callback=None):
     """
-    Downloads Adoptium Temurin OpenJDK 21 JRE zip and extracts to MC_DIR/runtime/java-21
+    Downloads Adoptium Temurin OpenJDK 21 JRE zip and extracts to MC_DIR/runtime/java-21.
+    Returns (ok: bool, message: str, javaw_path: str or None).
     """
     target_runtime_dir = os.path.join(MC_DIR, "runtime", "java-21")
     os.makedirs(target_runtime_dir, exist_ok=True)
     temp_zip = os.path.join(MC_DIR, "runtime", "java21_download.zip")
 
-    if progress_callback:
-        progress_callback(0, 100, 0, "Подключение к серверу Adoptium...")
-
-    req = urllib.request.Request(ADOPTIUM_URL, headers={"User-Agent": "AntigravityLauncher/1.0"})
-    with urllib.request.urlopen(req) as resp:
-        total_size = int(resp.headers.get("Content-Length", 48999141))
-        downloaded = 0
-        chunk_size = 131072 # 128 KB
-        
-        with open(temp_zip, "wb") as f:
-            while True:
-                chunk = resp.read(chunk_size)
-                if not chunk:
-                    break
-                f.write(chunk)
-                downloaded += len(chunk)
-                pct = int((downloaded / total_size) * 100) if total_size else 50
-                mb_down = downloaded / (1024 * 1024)
-                mb_tot = total_size / (1024 * 1024)
-                if progress_callback:
-                    progress_callback(downloaded, total_size, pct, f"Скачивание Java 21: {mb_down:.1f} / {mb_tot:.1f} МБ ({pct}%)")
-
-    if progress_callback:
-        progress_callback(total_size, total_size, 100, "Распаковка Java 21...")
-
-    # Extract
-    with zipfile.ZipFile(temp_zip, "r") as z:
-        z.extractall(target_runtime_dir)
-
     try:
-        os.remove(temp_zip)
-    except Exception:
-        pass
+        if progress_callback:
+            progress_callback(0.05, "Подключение к серверу Adoptium...")
 
-    # Find the javaw.exe
-    for root, dirs, files in os.walk(target_runtime_dir):
-        if "javaw.exe" in files:
-            javaw_path = os.path.normpath(os.path.join(root, "javaw.exe"))
-            if progress_callback:
-                progress_callback(total_size, total_size, 100, "Java 21 успешно установлена!")
-            return javaw_path
+        req = urllib.request.Request(ADOPTIUM_URL, headers={"User-Agent": "AntigravityLauncher/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            total_size = int(resp.headers.get("Content-Length", 48999141))
+            downloaded = 0
+            chunk_size = 131072 # 128 KB
+            
+            with open(temp_zip, "wb") as f:
+                while True:
+                    chunk = resp.read(chunk_size)
+                    if not chunk:
+                        break
+                    f.write(chunk)
+                    downloaded += len(chunk)
+                    frac = (downloaded / total_size) if total_size else 0.5
+                    pct = int(frac * 100)
+                    mb_down = downloaded / (1024 * 1024)
+                    mb_tot = total_size / (1024 * 1024)
+                    if progress_callback:
+                        progress_callback(0.05 + frac * 0.75, f"Скачивание Java 21: {mb_down:.1f} / {mb_tot:.1f} МБ ({pct}%)")
 
-    raise RuntimeError("Не удалось найти javaw.exe после распаковки.")
+        if progress_callback:
+            progress_callback(0.85, "Распаковка Adoptium Java 21...")
+
+        with zipfile.ZipFile(temp_zip, "r") as z:
+            z.extractall(target_runtime_dir)
+
+        try:
+            if os.path.exists(temp_zip):
+                os.remove(temp_zip)
+        except Exception:
+            pass
+
+        # Locate javaw.exe
+        for root, dirs, files in os.walk(target_runtime_dir):
+            if "javaw.exe" in files:
+                javaw_path = os.path.normpath(os.path.join(root, "javaw.exe"))
+                if progress_callback:
+                    progress_callback(1.0, "Java 21 успешно установлена!")
+                return True, "Java 21 успешно установлена!", javaw_path
+
+        return False, "Не удалось найти javaw.exe после распаковки.", None
+    except Exception as e:
+        try:
+            if os.path.exists(temp_zip):
+                os.remove(temp_zip)
+        except Exception:
+            pass
+        return False, f"Ошибка загрузки Java 21: {e}", None
 
 if __name__ == "__main__":
     javas = find_all_javas()

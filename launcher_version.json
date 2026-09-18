@@ -1,24 +1,32 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "release_date": "2026-09-18",
-  "changelog": "Clean architecture: launcher in dedicated folder, pure .minecraft root",
+  "changelog": "Добавлена полная авто-загрузка игры с нуля (Java 21, NeoForge 21.1.250, ассеты и моды)",
   "files": {
+    "Minecraft_Launcher.exe": {
+      "sha1": "8c40c77624fbf4bcb22a681eb0a7b0340d9741b5",
+      "size": 32377284
+    },
     "launcher.py": {
-      "sha1": "2bdcabb235cfb7b256bc1c62d5594283f2ce5648",
-      "size": 61848
+      "sha1": "a0d56bfdc407832bb718f9ed237874b8fbebb99e",
+      "size": 72834
     },
     "launcher_core.py": {
-      "sha1": "d3536b422b46c9d9bc58c521ed8f8b51a5b2c0ab",
-      "size": 7162
+      "sha1": "1394dc25006fb570d7ee490f7937b4514d0818c5",
+      "size": 7270
+    },
+    "game_downloader.py": {
+      "sha1": "7d068cb3218e229ba0e0859b78d6727e97e73e0c",
+      "size": 9313
     },
     "java_manager.py": {
-      "sha1": "8708277337d5ebe33eec959370e4aa3082aa78af",
-      "size": 6627
+      "sha1": "71d59a383fbd65d02c601ff17358076d67bd4497",
+      "size": 7156
     },
     "version_manager.py": {
-      "sha1": "058e641e5b380144bbfabebe1514ab2e1ea1a306",
-      "size": 4070
+      "sha1": "d00f7e7851ef8a8575b4763554f3310ec3557fd5",
+      "size": 5236
     },
     "mod_updater.py": {
       "sha1": "fc69461a282481eb1faa273068a1ce61409620f8",
@@ -33,8 +41,8 @@
       "size": 8535
     },
     "launcher_updater.py": {
-      "sha1": "341dde685740cbbc54cd2a67d497b5683d291eb9",
-      "size": 6567
+      "sha1": "04aebcb6fbcd9cd9e4aca348b8df94f4c0f31dd7",
+      "size": 6623
     },
     "push_to_github.py": {
       "sha1": "b0e28532123f3e03c028e81c89e790b48977e8ed",
@@ -61,8 +69,8 @@
       "size": 91676
     },
     "installer.py": {
-      "sha1": "a587816128b263f5b49c755e232e597ae6b0e5cb",
-      "size": 12815
+      "sha1": "f1223769d582538340a8a3818a8159c38dae01e7",
+      "size": 14503
     }
   }
 }

@@ -103,11 +103,11 @@ def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, t
 
     commit_sha = None
     try:
-        api_url = f"https://api.github.com/repos/{slug}/commits/{branch}"
+        api_url = f"https://api.github.com/repos/{slug}/branches/{branch}"
         api_req = urllib.request.Request(api_url, headers=headers)
         with urllib.request.urlopen(api_req, timeout=8) as resp:
             c_data = json.loads(resp.read().decode("utf-8"))
-            commit_sha = c_data.get("sha")
+            commit_sha = c_data.get("commit", {}).get("sha")
     except Exception:
         pass
 

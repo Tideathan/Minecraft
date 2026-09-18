@@ -1,12 +1,12 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "release_date": "2026-09-18",
-  "changelog": "Релиз 1.0.9: полная атомарная синхронизация через commit SHA",
+  "changelog": "Финальный проверенный релиз 1.1.0: полный цикл автообновлений, чистая загрузка игры NeoForge 21.1.248",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "6a1f20865e47d3da8919268cfc1bf22f05fa95b9",
-      "size": 32380201
+      "sha1": "5b8ba727f18f99c25d210f901d7fa0e36fde756f",
+      "size": 32381359
     },
     "launcher.py": {
       "sha1": "079f739bf5db83e2ed4d7cbcc1fedc1c82e87f28",
@@ -17,8 +17,8 @@
       "size": 7066
     },
     "game_downloader.py": {
-      "sha1": "fe369247e4d9cdd06210aa8d566d93db9dc6c3cd",
-      "size": 9666
+      "sha1": "7ca5f7fbdc8bf4e4fc2db86c2c9c6abb9df1f114",
+      "size": 9667
     },
     "java_manager.py": {
       "sha1": "439c754df4384f34420c7ccc624e11f6155cce2e",
@@ -45,8 +45,8 @@
       "size": 9837
     },
     "launcher_updater.py": {
-      "sha1": "bc2cbe331a994c86960b7a14a95b25a856cf2599",
-      "size": 9412
+      "sha1": "5fce2881ed1e8e875955920d64f0b21602cbaaf3",
+      "size": 9431
     },
     "push_to_github.py": {
       "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",
@@ -89,8 +89,8 @@
       "size": 15314
     },
     "Minecraft_Launcher_Setup.exe": {
-      "sha1": "0e5278345db787adee6dce6108b867c97f30efb7",
-      "size": 65185273
+      "sha1": "55e48251f2435244b2b5485a26e78b514b715251",
+      "size": 65187287
     }
   }
 }

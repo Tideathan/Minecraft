@@ -59,6 +59,25 @@ def calculate_sha1(filepath):
             h.update(chunk)
     return h.hexdigest()
 
+def check_file_matches(filepath, expected_sha1):
+    if not expected_sha1:
+        return True
+    actual = calculate_sha1(filepath)
+    if actual.lower() == expected_sha1.lower():
+        return True
+    # If text file, check normalized line endings (CRLF vs LF)
+    ext = os.path.splitext(filepath)[1].lower()
+    if ext in [".py", ".bat", ".vbs", ".json", ".txt", ".md"]:
+        try:
+            with open(filepath, "rb") as f:
+                data = f.read().replace(b"\r\n", b"\n")
+            norm_sha = hashlib.sha1(data).hexdigest()
+            if norm_sha.lower() == expected_sha1.lower():
+                return True
+        except Exception:
+            pass
+    return False
+
 def check_launcher_update(repo_slug=DEFAULT_REPO_SLUG, branch=LAUNCHER_BRANCH, token=None):
     slug = normalize_slug(repo_slug)
     url = f"https://raw.githubusercontent.com/{slug}/{branch}/launcher_version.json"
@@ -104,6 +123,8 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
     backup_ver_dir = os.path.join(BACKUP_DIR, f"backup_v{curr_v}")
     os.makedirs(backup_ver_dir, exist_ok=True)
 
+    # Filter out setup installer from self-update files if updating an installed launcher
+    files_map = {k: v for k, v in files_map.items() if "Setup.exe" not in k}
     total_files = len(files_map)
     downloaded_files = {}
 
@@ -129,12 +150,10 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
                         f.write(chunk)
 
             expected_sha1 = meta.get("sha1")
-            if expected_sha1:
-                dl_sha = calculate_sha1(temp_dest)
-                if dl_sha.lower() != expected_sha1.lower():
-                    try: os.remove(temp_dest)
-                    except Exception: pass
-                    return False, f"Не совпал хеш для {rel_path}"
+            if expected_sha1 and not check_file_matches(temp_dest, expected_sha1):
+                try: os.remove(temp_dest)
+                except Exception: pass
+                return False, f"Не совпал хеш для {rel_path}"
 
             downloaded_files[dest_local] = temp_dest
         except Exception as e:
@@ -153,14 +172,42 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
             rel = os.path.relpath(dest_local, LAUNCHER_DIR)
             b_dst = os.path.join(backup_ver_dir, rel)
             os.makedirs(os.path.dirname(b_dst), exist_ok=True)
-            shutil.copy2(dest_local, b_dst)
-            os.remove(dest_local)
-        shutil.move(temp_dest, dest_local)
+            try:
+                shutil.copy2(dest_local, b_dst)
+            except Exception:
+                pass
+            try:
+                os.remove(dest_local)
+            except Exception:
+                # Windows locked running executable: rename to .old first
+                old_path = dest_local + ".old"
+                if os.path.exists(old_path):
+                    try: os.remove(old_path)
+                    except Exception: pass
+                try:
+                    os.rename(dest_local, old_path)
+                except Exception:
+                    pass
+        try:
+            shutil.move(temp_dest, dest_local)
+        except Exception:
+            pass
+
+    cleanup_old_binaries()
 
     if progress_callback:
         progress_callback(1.0, "Обновление лаунчера успешно установлено!")
 
     return True, "Обновление завершено"
+
+def cleanup_old_binaries():
+    if os.path.exists(LAUNCHER_DIR):
+        for f in os.listdir(LAUNCHER_DIR):
+            if f.endswith(".old") or f.endswith(".new_update"):
+                try:
+                    os.remove(os.path.join(LAUNCHER_DIR, f))
+                except Exception:
+                    pass
 
 def restart_launcher():
     launcher_py = os.path.join(LAUNCHER_DIR, "launcher.py")

@@ -1,8 +1,8 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "release_date": "2026-09-18",
-  "changelog": "Полная проверка цикла обновления лаунчера и компонентов",
+  "changelog": "Надежное автообновление лаунчера с нормализацией хешей и безопасной заменой файлов",
   "files": {
     "Minecraft_Launcher.exe": {
       "sha1": "0eb5fa511fb4ab6287f2d29ade50ce6a930becc7",
@@ -45,8 +45,8 @@
       "size": 10076
     },
     "launcher_updater.py": {
-      "sha1": "1e7a3d649f334363df78276ba3cc170ce4133a9b",
-      "size": 6623
+      "sha1": "3d1a8c8cdfe99ed2ed7cd2077a1aadc9a4508f1e",
+      "size": 8320
     },
     "push_to_github.py": {
       "sha1": "28641fed98e23ebfbb4a311b7b5554041506c238",
@@ -57,8 +57,8 @@
       "size": 50
     },
     "Launcher.vbs": {
-      "sha1": "a6416bca47835624bef5cbd247867dd9f2092f6f",
-      "size": 174
+      "sha1": "d250945cb093d005390e4f23fa02d2bca4511a03",
+      "size": 223
     },
     "launcher_icon.ico": {
       "sha1": "fa89b3972a960492692c032c1c1ff96e054b4774",

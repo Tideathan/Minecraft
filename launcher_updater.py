@@ -7,7 +7,7 @@ import urllib.request
 import shutil
 import subprocess
 
-CURRENT_LAUNCHER_VERSION = "1.0.8"
+CURRENT_LAUNCHER_VERSION = "1.1.1"
 DEFAULT_REPO_SLUG = "Tideathan/Minecraft"
 LAUNCHER_BRANCH = "launcher"
 

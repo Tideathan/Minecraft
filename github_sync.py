@@ -9,11 +9,41 @@ MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CU
 BACKUP_DIR = os.path.normpath(os.path.join(MC_DIR, "..", ".minecraft_backup", "mods_replaced"))
 
 def calculate_sha1(filepath):
+    clean_path = filepath
+    if clean_path.endswith(".tmp_download"):
+        clean_path = clean_path[:-13]
+    ext = os.path.splitext(clean_path)[1].lower()
+    if ext in [".toml", ".json", ".txt", ".cfg", ".properties", ".ini", ".snbt", ".py", ".md"]:
+        try:
+            with open(filepath, "rb") as f:
+                data = f.read().replace(b"\r\n", b"\n")
+            return hashlib.sha1(data).hexdigest()
+        except Exception:
+            pass
     h = hashlib.sha1()
     with open(filepath, "rb") as f:
         while chunk := f.read(65536):
             h.update(chunk)
     return h.hexdigest()
+
+def check_file_matches(filepath, expected_sha1):
+    if not expected_sha1:
+        return True
+    exp = expected_sha1.lower()
+    if calculate_sha1(filepath).lower() == exp:
+        return True
+    try:
+        with open(filepath, "rb") as f:
+            raw = f.read()
+        if hashlib.sha1(raw).hexdigest().lower() == exp:
+            return True
+        if hashlib.sha1(raw.replace(b"\r\n", b"\n")).hexdigest().lower() == exp:
+            return True
+        if hashlib.sha1(raw.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest().lower() == exp:
+            return True
+    except Exception:
+        pass
+    return False
 
 def normalize_repo_slug(url_or_slug):
     s = url_or_slug.strip().rstrip("/")
@@ -71,28 +101,16 @@ def compare_manifest_with_local(manifest, progress_callback=None):
             })
             total_bytes += expected_size
         else:
-            local_size = os.path.getsize(local_full)
-            if local_size != expected_size:
+            if not check_file_matches(local_full, expected_sha1):
                 to_download.append({
                     "rel_path": rel_path,
                     "size": expected_size,
                     "expected_sha1": expected_sha1,
-                    "reason": "Изменен"
+                    "reason": "Обновлен"
                 })
                 total_bytes += expected_size
             else:
-                # Check SHA1
-                local_sha1 = calculate_sha1(local_full)
-                if local_sha1.lower() != expected_sha1.lower():
-                    to_download.append({
-                        "rel_path": rel_path,
-                        "size": expected_size,
-                        "expected_sha1": expected_sha1,
-                        "reason": "Обновлен"
-                    })
-                    total_bytes += expected_size
-                else:
-                    up_to_date_count += 1
+                up_to_date_count += 1
 
     # Check for outdated mods locally that are deleted in manifest
     to_delete = []
@@ -163,8 +181,7 @@ def sync_differences(comparison_result, repo_slug, branch="main", token=None, pr
                                 f_lfs.write(chunk)
 
             # Check downloaded file SHA1
-            dl_sha1 = calculate_sha1(temp_target)
-            if item.get("expected_sha1") and dl_sha1.lower() != item["expected_sha1"].lower():
+            if item.get("expected_sha1") and not check_file_matches(temp_target, item["expected_sha1"]):
                 try: os.remove(temp_target)
                 except Exception: pass
                 return False, f"Не совпадает хеш SHA1 для {rel_p}"

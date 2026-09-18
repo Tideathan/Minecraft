@@ -1,3 +1,3 @@
 Set WshShell = CreateObject("WScript.Shell")
-WshShell.CurrentDirectory = "c:\Users\user\AppData\Roaming\.minecraft"
+WshShell.CurrentDirectory = "c:\Users\user\AppData\Roaming\.minecraft\launcher"
 WshShell.Run "pythonw.exe launcher.py", 0, False

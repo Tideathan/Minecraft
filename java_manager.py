@@ -5,7 +5,8 @@ import subprocess
 import urllib.request
 import shutil
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
 ADOPTIUM_URL = "https://api.adoptium.net/v3/binary/latest/21/ga/windows/x64/jre/hotspot/normal/eclipse?project=jdk"
 
 def get_java_version_info(javaw_path):

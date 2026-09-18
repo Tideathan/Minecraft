@@ -2,51 +2,51 @@
   "name": "Minecraft NeoForge Launcher",
   "version": "1.0.0",
   "release_date": "2026-09-18",
-  "changelog": "Initial release of Minecraft NeoForge Launcher with installer and updater",
+  "changelog": "Clean architecture: launcher in dedicated folder, pure .minecraft root",
   "files": {
     "launcher.py": {
-      "sha1": "4376b97a10a106f192d5dea22f553fb0357c7f31",
-      "size": 61460
+      "sha1": "2bdcabb235cfb7b256bc1c62d5594283f2ce5648",
+      "size": 61848
     },
     "launcher_core.py": {
-      "sha1": "a8cf9d0be8587c2b3fb3e3e2f4a8cb23035df039",
-      "size": 6976
+      "sha1": "d3536b422b46c9d9bc58c521ed8f8b51a5b2c0ab",
+      "size": 7162
     },
     "java_manager.py": {
-      "sha1": "2d6bed7f7f6199f80a558f40c04d831f253e13f7",
-      "size": 6466
+      "sha1": "8708277337d5ebe33eec959370e4aa3082aa78af",
+      "size": 6627
     },
     "version_manager.py": {
-      "sha1": "98c5fb522909ff4613cc46dce5bf3d9010ccf6a4",
-      "size": 3908
+      "sha1": "058e641e5b380144bbfabebe1514ab2e1ea1a306",
+      "size": 4070
     },
     "mod_updater.py": {
-      "sha1": "867fdd8c95a6ccd68ef4ab2c7a2895ee40900503",
-      "size": 6134
+      "sha1": "fc69461a282481eb1faa273068a1ce61409620f8",
+      "size": 6296
     },
     "skin_manager.py": {
-      "sha1": "f3b7ffffe721255a8cbd98bb2aed5e09c597a6b1",
-      "size": 6623
+      "sha1": "54082bc33735b61120d9d6164779f6cf147752be",
+      "size": 6785
     },
     "github_sync.py": {
-      "sha1": "d1c59adc07c35a0f6c88cef3153aa65b048a52fb",
-      "size": 8373
+      "sha1": "56fbd496d24d0906c8ce1c101f5ffc8ef1cde4ac",
+      "size": 8535
     },
     "launcher_updater.py": {
-      "sha1": "7c5a83bcec43f7437c98f03572aa9f5f531d80d0",
-      "size": 6357
+      "sha1": "341dde685740cbbc54cd2a67d497b5683d291eb9",
+      "size": 6567
     },
     "push_to_github.py": {
-      "sha1": "a017c6e25c8fa48d5a00dbea56a0ce2f11712314",
-      "size": 8367
+      "sha1": "b0e28532123f3e03c028e81c89e790b48977e8ed",
+      "size": 8626
     },
     "Launcher.bat": {
       "sha1": "fc657e5e175ed95191eb904ea5ff7fd75b127163",
       "size": 50
     },
     "Launcher.vbs": {
-      "sha1": "b23c456efe8c61c2c14a59f8737bdbd457e944e5",
-      "size": 165
+      "sha1": "a6416bca47835624bef5cbd247867dd9f2092f6f",
+      "size": 174
     },
     "launcher_icon.ico": {
       "sha1": "fa89b3972a960492692c032c1c1ff96e054b4774",
@@ -61,12 +61,8 @@
       "size": 91676
     },
     "installer.py": {
-      "sha1": "e0d864d8c904dc2e0d2947f25a7a8fda6ced14e9",
-      "size": 12376
-    },
-    "Minecraft_Launcher_Setup.exe": {
-      "sha1": "545b1680518807f8d64122961f7c36a28ef4e226",
-      "size": 33060107
+      "sha1": "a587816128b263f5b49c755e232e597ae6b0e5cb",
+      "size": 12815
     }
   }
 }

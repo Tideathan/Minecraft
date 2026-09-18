@@ -10,8 +10,10 @@ CURRENT_LAUNCHER_VERSION = "1.0.0"
 DEFAULT_REPO_SLUG = "Tideathan/Minecraft"
 LAUNCHER_BRANCH = "launcher"
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
-BACKUP_DIR = r"c:\Users\user\AppData\Roaming\.minecraft_backup\launcher_updates"
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+LAUNCHER_DIR = _CURR_DIR
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+BACKUP_DIR = os.path.join(MC_DIR, "..", ".minecraft_backup", "launcher_updates")
 
 LAUNCHER_FILES = [
     "launcher.py",
@@ -113,7 +115,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
             progress_callback(i / total_files * 0.8, f"Загрузка файла: {rel_path}...")
 
         raw_url = f"https://raw.githubusercontent.com/{slug}/{branch}/{rel_path.replace('\\', '/')}"
-        dest_local = os.path.join(MC_DIR, rel_path)
+        dest_local = os.path.join(LAUNCHER_DIR, rel_path)
         temp_dest = dest_local + ".new_update"
         os.makedirs(os.path.dirname(temp_dest), exist_ok=True)
 
@@ -146,7 +148,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
 
     for dest_local, temp_dest in downloaded_files.items():
         if os.path.exists(dest_local):
-            rel = os.path.relpath(dest_local, MC_DIR)
+            rel = os.path.relpath(dest_local, LAUNCHER_DIR)
             b_dst = os.path.join(backup_ver_dir, rel)
             os.makedirs(os.path.dirname(b_dst), exist_ok=True)
             shutil.copy2(dest_local, b_dst)
@@ -159,7 +161,7 @@ def apply_launcher_update(update_info, repo_slug=DEFAULT_REPO_SLUG, branch=LAUNC
     return True, "Обновление завершено"
 
 def restart_launcher():
-    launcher_py = os.path.join(MC_DIR, "launcher.py")
+    launcher_py = os.path.join(LAUNCHER_DIR, "launcher.py")
     if getattr(sys, "frozen", False):
         subprocess.Popen([sys.executable] + sys.argv[1:])
     else:
@@ -169,6 +171,6 @@ def restart_launcher():
             pyw = os.path.join(os.path.dirname(py_exe), "pythonw.exe")
             if os.path.exists(pyw):
                 py_exe = pyw
-        subprocess.Popen([py_exe, launcher_py], cwd=MC_DIR)
+        subprocess.Popen([py_exe, launcher_py], cwd=LAUNCHER_DIR)
     
     sys.exit(0)

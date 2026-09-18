@@ -52,11 +52,20 @@ from launcher_updater import (
     restart_launcher
 )
 
+LAUNCHER_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_FILE = os.path.join(MC_DIR, "launcher_config.json")
-ICON_ICO_PATH = os.path.join(MC_DIR, "minecraft_wolf.ico")
+
+ICON_ICO_PATH = os.path.join(LAUNCHER_DIR, "minecraft_wolf.ico")
+if not os.path.exists(ICON_ICO_PATH):
+    ICON_ICO_PATH = os.path.join(MC_DIR, "minecraft_wolf.ico")
+if not os.path.exists(ICON_ICO_PATH):
+    ICON_ICO_PATH = os.path.join(LAUNCHER_DIR, "launcher_icon.ico")
 if not os.path.exists(ICON_ICO_PATH):
     ICON_ICO_PATH = os.path.join(MC_DIR, "launcher_icon.ico")
-ICON_PNG_PATH = os.path.join(MC_DIR, "launcher_icon.png")
+
+ICON_PNG_PATH = os.path.join(LAUNCHER_DIR, "launcher_icon.png")
+if not os.path.exists(ICON_PNG_PATH):
+    ICON_PNG_PATH = os.path.join(MC_DIR, "launcher_icon.png")
 
 # RAM settings (in 256 MB chunks)
 RAM_MIN_MB = 4096

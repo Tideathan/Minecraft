@@ -4,7 +4,12 @@ import json
 import uuid
 import subprocess
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+if os.path.basename(_CURR_DIR).lower() == "launcher":
+    MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, ".."))
+else:
+    MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+
 DEFAULT_JAVA = os.path.join(MC_DIR, "runtime", "java-runtime-delta", "windows", "java-runtime-delta", "bin", "javaw.exe")
 if not os.path.exists(DEFAULT_JAVA):
     DEFAULT_JAVA = "javaw.exe"

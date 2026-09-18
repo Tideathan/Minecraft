@@ -4,7 +4,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 import subprocess
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
 VERSIONS_DIR = os.path.join(MC_DIR, "versions")
 MAVEN_METADATA_URL = "https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml"
 

@@ -4,7 +4,8 @@ import hashlib
 import urllib.request
 import shutil
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
 BACKUP_DIR = r"c:\Users\user\AppData\Roaming\.minecraft_backup\mods_replaced"
 
 def calculate_sha1(filepath):

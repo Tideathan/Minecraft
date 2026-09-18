@@ -2,7 +2,8 @@ import os
 import shutil
 from PIL import Image
 
-MC_DIR = os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
+_CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+MC_DIR = os.path.normpath(os.path.join(_CURR_DIR, "..")) if os.path.basename(_CURR_DIR).lower() == "launcher" else os.path.normpath(r"c:\Users\user\AppData\Roaming\.minecraft")
 RESOURCEPACKS_DIR = os.path.join(MC_DIR, "resourcepacks")
 SKIN_PACK_DIR = os.path.join(RESOURCEPACKS_DIR, "UserSkinPack")
 SKIN_PREVIEW_PATH = os.path.join(MC_DIR, "current_skin_preview.png")

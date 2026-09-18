@@ -221,11 +221,14 @@ class InstallerApp(ctk.CTk):
             try:
                 os.makedirs(target_dir, exist_ok=True)
                 
-                # 1. Copy launcher files
+                launcher_dir = os.path.join(target_dir, "launcher")
+                os.makedirs(launcher_dir, exist_ok=True)
+
+                # 1. Copy launcher files into launcher/
                 total = len(LAUNCHER_FILES)
                 for i, fname in enumerate(LAUNCHER_FILES):
                     src = os.path.join(BUNDLE_DIR, fname)
-                    dst = os.path.join(target_dir, fname)
+                    dst = os.path.join(launcher_dir, fname)
                     if os.path.exists(src):
                         os.makedirs(os.path.dirname(dst), exist_ok=True)
                         shutil.copy2(src, dst)
@@ -236,7 +239,7 @@ class InstallerApp(ctk.CTk):
                         self.lbl_status.configure(text=f"Копирование: {f}...")
                     ))
 
-                # 2. Config file
+                # 2. Config file in root of game
                 cfg_path = os.path.join(target_dir, "launcher_config.json")
                 if not os.path.exists(cfg_path):
                     import json
@@ -247,18 +250,23 @@ class InstallerApp(ctk.CTk):
                 self.after(0, lambda: self.lbl_status.configure(text="Создание ярлыков..."))
                 self.progress_bar.set(0.75)
 
-                wolf_ico = os.path.join(target_dir, "minecraft_wolf.ico")
+                wolf_ico = os.path.join(launcher_dir, "minecraft_wolf.ico")
                 if not os.path.exists(wolf_ico):
-                    wolf_ico = os.path.join(target_dir, "launcher_icon.ico")
+                    wolf_ico = os.path.join(launcher_dir, "launcher_icon.ico")
 
-                vbs_launcher = os.path.join(target_dir, "Launcher.vbs")
-                # Ensure Launcher.vbs points to current directory
+                vbs_launcher = os.path.join(launcher_dir, "Launcher.vbs")
                 with open(vbs_launcher, "w", encoding="utf-8") as vf:
                     vf.write(f'Set WshShell = CreateObject("WScript.Shell")\n')
-                    vf.write(f'WshShell.CurrentDirectory = "{target_dir}"\n')
+                    vf.write(f'WshShell.CurrentDirectory = "{launcher_dir}"\n')
                     vf.write(f'WshShell.Run "pythonw.exe launcher.py", 0, False\n')
 
-                # Target for shortcut: wscript.exe running Launcher.vbs (silent no console)
+                # Root helper Launcher.vbs
+                root_vbs = os.path.join(target_dir, "Launcher.vbs")
+                with open(root_vbs, "w", encoding="utf-8") as rvf:
+                    rvf.write(f'Set WshShell = CreateObject("WScript.Shell")\n')
+                    rvf.write(f'WshShell.CurrentDirectory = "{launcher_dir}"\n')
+                    rvf.write(f'WshShell.Run "pythonw.exe launcher.py", 0, False\n')
+
                 wscript_path = os.path.join(os.environ.get("WINDIR", "C:\\Windows"), "System32", "wscript.exe")
                 
                 if self.chk_desktop.get():
@@ -267,7 +275,7 @@ class InstallerApp(ctk.CTk):
                     create_windows_shortcut(
                         target_path=wscript_path,
                         shortcut_path=shortcut_desktop,
-                        working_dir=target_dir,
+                        working_dir=launcher_dir,
                         icon_path=wolf_ico,
                         description="Minecraft NeoForge 1.21.1 Launcher"
                     )
@@ -280,7 +288,7 @@ class InstallerApp(ctk.CTk):
                         create_windows_shortcut(
                             target_path=wscript_path,
                             shortcut_path=shortcut_sm,
-                            working_dir=target_dir,
+                            working_dir=launcher_dir,
                             icon_path=wolf_ico,
                             description="Minecraft NeoForge 1.21.1 Launcher"
                         )

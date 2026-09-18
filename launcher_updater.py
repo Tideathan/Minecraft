@@ -58,7 +58,10 @@ def normalize_slug(url_or_slug):
     return s.strip("/")
 
 def calculate_sha1(filepath):
-    ext = os.path.splitext(filepath)[1].lower()
+    clean_path = filepath
+    if clean_path.endswith(".new_update"):
+        clean_path = clean_path[:-11]
+    ext = os.path.splitext(clean_path)[1].lower()
     if ext in [".py", ".bat", ".vbs", ".json", ".txt", ".md"]:
         with open(filepath, "rb") as f:
             data = f.read().replace(b"\r\n", b"\n")
@@ -72,21 +75,17 @@ def calculate_sha1(filepath):
 def check_file_matches(filepath, expected_sha1):
     if not expected_sha1:
         return True
-    actual = calculate_sha1(filepath)
-    if actual.lower() == expected_sha1.lower():
+    exp = expected_sha1.lower()
+    if calculate_sha1(filepath).lower() == exp:
         return True
-    # Also check raw binary or CRLF conversion just in case
     try:
-        h = hashlib.sha1()
-        with open(filepath, "rb") as f:
-            while chunk := f.read(65536):
-                h.update(chunk)
-        if h.hexdigest().lower() == expected_sha1.lower():
-            return True
         with open(filepath, "rb") as f:
             raw = f.read()
-        crlf_sha = hashlib.sha1(raw.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest()
-        if crlf_sha.lower() == expected_sha1.lower():
+        if hashlib.sha1(raw).hexdigest().lower() == exp:
+            return True
+        if hashlib.sha1(raw.replace(b"\r\n", b"\n")).hexdigest().lower() == exp:
+            return True
+        if hashlib.sha1(raw.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n")).hexdigest().lower() == exp:
             return True
     except Exception:
         pass

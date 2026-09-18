@@ -1,12 +1,12 @@
 {
   "name": "Minecraft NeoForge Launcher",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "release_date": "2026-09-18",
-  "changelog": "Релиз 1.0.7: автообновление, обход кэша CDN и чистая загрузка игры",
+  "changelog": "Обновление 1.0.8: улучшенная проверка хешей и полная поддержка автообновлений",
   "files": {
     "Minecraft_Launcher.exe": {
-      "sha1": "cf0e91bbd60680bcb6775f6633b846de1ab8289c",
-      "size": 32379688
+      "sha1": "6a1f20865e47d3da8919268cfc1bf22f05fa95b9",
+      "size": 32380201
     },
     "launcher.py": {
       "sha1": "079f739bf5db83e2ed4d7cbcc1fedc1c82e87f28",
@@ -45,8 +45,8 @@
       "size": 10076
     },
     "launcher_updater.py": {
-      "sha1": "200a9b913437d05f0343fac7ba97a28a107168bc",
-      "size": 8830
+      "sha1": "0800ee7839e3586134d950bf9d6a51cf4d7eee9b",
+      "size": 8789
     },
     "push_to_github.py": {
       "sha1": "a28d15c1daeff09caf963def7086ad6e47cc504c",

@@ -1,0 +1,35 @@
+# Default: 90
+# Range: 0 ~ 100
+showWindParticles = 90
+achievementToast = true
+playerOurMusic = false
+showItemPrice = true
+
+[HUD]
+	leftEffectIcon = true
+
+	[HUD.Health]
+		terraStyleHealth = true
+		#Allowed Values: LEGACY, OVERLAY
+		healthStyle = "OVERLAY"
+
+	[HUD.Food]
+		terraStyleFood = true
+		#Allowed Values: LEGACY, OVERLAY
+		foodStyle = "OVERLAY"
+
+	[HUD.Mana]
+		#Allowed Values: LEGACY, OVERLAY
+		manaStyle = "OVERLAY"
+
+	[HUD.Armor]
+		terraStyleArmor = true
+		#Allowed Values: LEGACY_HORIZONTAL, LEGACY_DIAGONAL, LEGACY_VERTICAL, OVERLAY
+		armorStyle = "OVERLAY"
+
+[Entity]
+	bloodyEffect = true
+	#Allowed Values: OFF, CONFLUENCE, CONFLUENCE_VANILLA, ALL
+	goreEffect = "CONFLUENCE_VANILLA"
+	damageIndicator = true
+	healIndicator = true

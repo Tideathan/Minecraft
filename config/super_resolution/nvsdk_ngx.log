@@ -1,0 +1,7 @@
+[2026-09-15 01:22:59] [ngx::util::setLogFilename:216] Logging to requested file (C:\Users\user\AppData\Roaming\.minecraft\config\super_resolution/nvsdk_ngx.log) enabled successfully
+[2026-09-15 01:22:59] [NGXSafeInitializeLog:148] App logging hooks successfully initialized
+[2026-09-15 01:22:59] [NGXLoadLibrary:326] error: failed to load NGXCore: 126 (C:\Users\user\AppData\Roaming\.minecraft\runtime\java-runtime-delta\windows\java-runtime-delta\bin\_nvngx.dll)
+[2026-09-15 01:22:59] [NGXLoadLibrary:326] error: failed to load NGXCore: 126 (C:\Users\user\AppData\Roaming\.minecraft\runtime\java-runtime-delta\windows\java-runtime-delta\bin\nvngx.dll)
+[2026-09-15 01:22:59] [NGXGetPathUsingQAI:147] Attempting to read from Parameters\NGXCore\NGXPath
+[2026-09-15 01:22:59] [NGXGetPathUsingQAI:171] Path to driverStore found using QAI: C:\Windows\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2
+[2026-09-15 01:22:59] [NGXLoadCoreLibrary:279] Loading C:\Windows\System32\DriverStore\FileRepository\nvmdi.inf_amd64_21e6b42b376b80b2\_nvngx.dll succeeded

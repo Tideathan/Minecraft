@@ -1,0 +1,8 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"travelersbackpack:jukebox_upgrade"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"minecraft:crafting_table"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"travelersbackpack:standard"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"travelersbackpack:netherite","components":{"travelersbackpack:starter_upgrades":[{"slot":0,"item":{"id":"travelersbackpack:tanks_upgrade","count":1}}]}},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"travelersbackpack:emerald","components":{"travelersbackpack:tier":1,"travelersbackpack:storage_slots":45,"travelersbackpack:upgrade_slots":3,"travelersbackpack:tool_slots":3}},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

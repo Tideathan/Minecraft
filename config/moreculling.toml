@@ -1,0 +1,33 @@
+version = 1
+enableSodiumMenu = true
+dontCull = []
+cloudCulling = true
+signTextCulling = true
+rainCulling = true
+useBlockStateCulling = true
+useCustomItemFrameRenderer = true
+itemFrameMapCulling = true
+useItemFrameLOD = true
+itemFrameLODRange = 16
+useItemFrame3FaceCulling = true
+itemFrame3FaceCullingRange = 2.0
+paintingCulling = true
+leavesCullingMode = "DEFAULT"
+leavesCullingAmount = 4
+includeMangroveRoots = false
+endGatewayCulling = false
+beaconBeamCulling = true
+useOnModdedBlocksByDefault = true
+
+[modCompatibility]
+enemybanner = true
+terra_entity = true
+terra_curio = true
+travelersbackpack = true
+waystones = true
+confluence = true
+cobblemon = true
+biomesoplenty = true
+terra_furniture = true
+minecraft = true
+gravestones = true

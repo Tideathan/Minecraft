@@ -1,0 +1,5 @@
+[
+  {"version":1},
+  {"ingredient":{"id":"stellaris:rocket"},"type":"item_stack","bookmarkType":"INGREDIENT"},
+  {"ingredient":{"id":"stellaris:rocket","components":{"stellaris:rocket_component":{"fuel":5000,"fuel_texture":"stellaris:util/energy_full","fuel_capacity":5000,"skin":"stellaris","model":"tiny","fuel_type":"radioactive"}}},"type":"item_stack","bookmarkType":"INGREDIENT"}
+]

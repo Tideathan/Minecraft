@@ -1,0 +1,3 @@
+[Paints]
+	paintsReplaceTexture = false
+	bannedModForPaints = ["integrateddynamics", "ae2", "refinedstorage", "create", "mekanism", "immersiveengineering", "enderio"]

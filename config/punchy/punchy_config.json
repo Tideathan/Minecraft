@@ -1,0 +1,22 @@
+{
+  "renderArmorArmsFP": true,
+  "bettercombatCompat": false,
+  "swordBlockingCompat": false,
+  "animationSpeed": 5.5,
+  "enableMod": true,
+  "enableTuning": false,
+  "disableResourcePackModelParts": false,
+  "disableArmPhysics": false,
+  "disableNativeItemPhysics": false,
+  "disableBoatMinecartRaftModels": false,
+  "disablePistonModels": false,
+  "disableChestModels": false,
+  "disableEnchantingTableModels": false,
+  "disableBoatFirstPersonAnimations": false,
+  "disableEnhancedFireArmEffects": false,
+  "enableCrawlAnimation": true,
+  "enableClimbAnimation": true,
+  "firstPersonModelHideEnabled": true,
+  "firstPersonModelHidePitch": 60.0,
+  "itemBlacklist": []
+}

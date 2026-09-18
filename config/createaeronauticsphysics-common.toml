@@ -1,0 +1,23 @@
+#Physics destruction settings
+[destruction]
+	#Base damage multiplier (force * scale * massRatio)
+	# Default: 0.001
+	# Range: 1.0E-4 ~ 10.0
+	damageScale = 0.001
+	#Minimum force required to deal damage
+	# Default: 15.0
+	# Range: 0.1 ~ 1000.0
+	minImpactForce = 15.0
+	#Damage multiplier when hitting static blocks (ground)
+	# Default: 3.0
+	# Range: 0.1 ~ 10.0
+	groundDamageMultiplier = 3.0
+
+#Explosion settings
+[explosions]
+	#Whether blocks tagged with createaeronauticsphysics:explosive_on_destroy explode when destroyed
+	enableExplosions = true
+	#Radius of explosion (in blocks)
+	# Default: 2
+	# Range: 1 ~ 10
+	explosionRadius = 2

@@ -1,0 +1,5 @@
+[furniture]
+	#Allows slabs, stairs, rods, grindstones, fences and other non full blocks to be use as furniture materials.
+	allowNonFullBlockMaterial = true
+	#Adds opaque underlay below textures of non full blocks. Glass blocks are exclude.
+	fillTransparentMaterialGaps = true

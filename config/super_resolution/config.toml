@@ -1,0 +1,104 @@
+#Flip Vulkan-OpenGL interop upscaling resources on the Y axis
+flip_vk_gl_interop_resources_y = false
+#Primary color for the interface theme
+theme_color = "#000000"
+#List of post-processing chains to skip injection
+inject_post_chain_blacklist = []
+#Screen capture mode
+capture_mode = "A"
+interop_sync_mode = "LowLatency"
+#Upscale ratio factor
+upscale_ratio = 1.0
+#Algorithm used for upscaling
+upscale_algo = "dlss"
+#Color scheme variant for the interface theme
+theme_scheme_variant = "FIDELITY"
+#Contrast level for the interface theme (-1.0 to 1.0)
+theme_contrast_level = 0.0
+#This option enables the use of a compatibility shader compiler for compiling shaders when set to true.
+compat_shader_compiler = true
+#Interface theme
+theme = "Dark"
+#Sharpness adjustment factor
+sharpness = 0.32
+#Enable unstable super resolution support for incompatible shader packs. Requires a game restart.
+enable_unstable_incompatible_shader_support = true
+#Enable super-resolution upscaling
+enable_upscale = false
+#Pause game when GUI is open
+pause_game_on_gui = false
+#The precision of the internal texture format affects video memory consumption: higher precision results in greater consumption, while lower precision leads to smaller consumption. Note: Excessively low precision may cause noticeable color banding in the image.
+internal_texture_format = "AUTO"
+#Hide algorithms explicitly disabled by the active V3 shader pack from the algorithm selector
+auto_hide_shaderpack_disabled_algorithms = false
+
+[debug]
+	#Skip Vulkan initialization (auto-set based on OS)
+	skip_init_vulkan = false
+	#Enable RenderDoc integration (auto-disabled on incompatible OS)
+	enable_render_doc = false
+	#Enable debug mode
+	enable_debug = false
+	#Stamp a small square onto every presented frame (white = rendered, cyan = generated) to visualize frame generation cadence
+	enable_present_indicator = false
+	#Enable ImGui debug interface (auto-disabled on incompatible OS)
+	enable_imgui = false
+	#Dump shaders for debugging purposes
+	debug_dump_shader = false
+	#Enable more detailed performance profiling for advanced analysis.
+	enable_detailed_profiling = false
+
+[optiscaler]
+	#Absolute path to the OptiScaler DLL file.
+	dll_path = ""
+	#Load the selected OptiScaler DLL during early game startup.
+	enabled = false
+
+[presentation]
+	#Presentation backend. Requires a game restart.
+	backend = "VULKAN"
+
+#Algorithm special configuration
+[special]
+
+	[special.fsr]
+		version = "V3"
+
+	[special.dlssrr]
+		render_preset = "F"
+
+	[special.dlss]
+		render_preset = "M"
+
+	[special.sgsr2]
+		variant = "CS_2"
+
+	[special.fsr1]
+		fp16 = false
+
+	[special.fsr2]
+		fp16 = false
+
+[experiment]
+	#Enable experimental algorithms
+	enable_experimental_algorithms = true
+	#Register NVIDIA DLSS Ray Reconstruction during startup
+	enable_dlss_ray_reconstruction = true
+	#Generate motion vectors for advanced effects
+	generate_motion_vectors = false
+
+[frame_generation]
+	#NVIDIA DLSS Frame Generation mode
+	mode = "OFF"
+	#DLSS Frame Generation algorithm group. The automatic entry considers every registered group.
+	provider = "superresolution:auto"
+	#Concrete DLSS Frame Generation backend preference. Auto keeps the registered backend priority.
+	backend = "superresolution:auto"
+
+[low_latency]
+	#Low latency mode
+	mode = "superresolution:none"
+
+	[low_latency.nv_reflex]
+		#NVIDIA Reflex low latency mode
+		mode = "OFF"

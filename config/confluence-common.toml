@@ -1,0 +1,50 @@
+[Gameplay]
+	dropsMoney = true
+	autoStackGelsColor = true
+	returnPotionGlassBottle = false
+	rightClickRideMinecart = true
+	# Default: 128
+	# Range: > 0
+	announcementBoxDistance = 128
+	alertPlayerDungeon = false
+	starPhase = false
+
+[Recipe]
+	fletchingMenu = true
+	shimmerDecompose = true
+	brewingStandRecipe = false
+	altarTips = true
+
+[Spawning]
+	doMeteoriteSpawning = true
+
+	[Spawning."Falling Star"]
+		doFallingStarSpawning = true
+		# Default: 2400
+		# Range: 20 ~ 20000
+		fallingStarInterval = 2400
+
+	[Spawning.NPC]
+		doNPCSpawning = true
+		# Default: 2400
+		# Range: 20 ~ 20000
+		npcSpawnInterval = 2400
+
+[PlayerDeath]
+	showMoneyDrops = true
+	dropsTombstone = true
+	# Default: 3
+	# Range: > 0
+	defaultRespawnTimeMin = 3
+	# Default: 8
+	# Range: > 0
+	defaultRespawnTimeMax = 8
+	# Default: 9
+	# Range: > 0
+	bossRespawnTimeMin = 9
+	# Default: 18
+	# Range: > 0
+	bossRespawnTimeMax = 18
+
+[WorldGeneration]
+	wrappedCrimsonHeart = false

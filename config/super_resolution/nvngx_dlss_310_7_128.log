@@ -1,0 +1,248 @@
+[2026-09-15 01:23:00] [tid:34804][util::setLogFilename:246] Logging to requested file (C:\Users\user\AppData\Roaming\.minecraft\config\super_resolution//nvngx_dlss_310_7_128.log) enabled successfully
+[2026-09-15 01:23:00] [tid:34804][NGXInitLog:232] App logging hooks successfully initialized
+[2026-09-15 01:23:00] [tid:34804][NGXInitLog:238] Build v310.7.128 CL 38277099
+[2026-09-15 01:23:00] [tid:34804][NGXInitLog:240] Built with APP_NAME = nvapp_override
+[2026-09-15 01:23:00] [tid:34804][NGXInitLog:246] Loaded from path "C:\Users\user\AppData\Roaming\.minecraft\runtime\java-runtime-delta\windows\java-runtime-delta\bin/javaw.exe"
+[2026-09-15 01:23:00] [tid:34804][NGXCubinVulkan::Init:204] Enabling texmode_raw
+[2026-09-15 01:23:00] [tid:34804][NGXCubinKernelMap::InitCubins:42] Loading NGXCubin kernels
+[2026-09-15 01:23:00] [tid:34804][NGXCubinGeneric::SetGPUArch:400] SetGPUArch:: Gpu count = 1, luid: 0x114fd
+[2026-09-15 01:23:00] [tid:34804][NGXCubinGeneric::SetGPUArch:460] m_gpuArch = 0x190
+[2026-09-15 01:23:00] [tid:34804][NGXCubinGeneric::genericPostInit:164] Fast UAV clear: supported
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLAA Cubins
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLSS Debug Cubins
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLTSS Engine Cubins
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLTSS NW Cubins
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLTSS NW E5M3_SKIP Cubins
+[2026-09-15 01:23:00] [tid:34804][DLSSCubinKernelMap::InitCubins:303] Setting DLTSS NW Cubins
+[2026-09-15 01:23:00] [tid:34804][DldnCubinKernelMap::InitCubins:138] Setting DLDN Engine Pre / Post Cubins
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:23:00] [tid:19704][AliasTensorContainer:192] Texture is too small to fit tensor buffer: 4751360 < 6291456
+[2026-09-15 01:23:00] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 5 MiB allocated
+[2026-09-15 01:23:00] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 6 MiB allocated
+[2026-09-15 01:23:00] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 4 MiB aliased
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][AliasTensorContainer:192] Texture is too small to fit tensor buffer: 4751360 < 6291456
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 5 MiB allocated
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 6 MiB allocated
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 4 MiB aliased
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:23:27] [tid:19704][AliasTensorContainer:192] Texture is too small to fit tensor buffer: 4751360 < 6291456
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 5 MiB allocated
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 6 MiB allocated
+[2026-09-15 01:23:27] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 4 MiB aliased
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:24:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 10 MiB allocated
+[2026-09-15 01:24:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 12 MiB aliased
+[2026-09-15 01:24:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 8 MiB aliased
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:24:52] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 10 MiB allocated
+[2026-09-15 01:24:52] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 12 MiB aliased
+[2026-09-15 01:24:52] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 8 MiB aliased
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:25:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 10 MiB allocated
+[2026-09-15 01:25:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 12 MiB aliased
+[2026-09-15 01:25:23] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 8 MiB aliased
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset K
+[2026-09-15 01:25:47] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 10 MiB allocated
+[2026-09-15 01:25:47] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 12 MiB aliased
+[2026-09-15 01:25:47] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 8 MiB aliased
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset J
+[2026-09-15 01:26:03] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 10 MiB allocated
+[2026-09-15 01:26:03] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 12 MiB aliased
+[2026-09-15 01:26:03] [tid:19704][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 8 MiB aliased
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:26:05] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset F
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset F
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset F
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset F
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset F
+[2026-09-15 01:26:10] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset F
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:26:13] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset L
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset L
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset L
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset L
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset L
+[2026-09-15 01:26:16] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset L
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:26:20] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:27:32] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:27:35] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:27:37] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxRayReconstruction::FillCreationParams::<lambda_2c301b47b301a4dce58d7f535d827256>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (DLAA) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Quality) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Balanced) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (Perf) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraPerf) Using App hint Preset M
+[2026-09-15 01:27:39] [tid:19704][NgxDltss::FillCreationParams::<lambda_6483c133f5355c1f6fe1009db7d366f8>::operator ():2886] Info: (UltraQuality) Using App hint Preset M
